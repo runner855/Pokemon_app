@@ -1,7 +1,5 @@
 export enum AppUrls {
   HOME = "/home",
-  IMAGES = "/images",
-  APOD = "/apod",
   POKEMON = "/pokemon",
   POKEMON_DETAILS = "/pokemon/pokemon_details",
 }
@@ -13,12 +11,6 @@ export interface SearchBarProps {
   handleClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-export interface NasaData {
-  data: NasaObjectResult[];
-  href: string;
-  links: LinksObject[];
-}
-
 export interface LinksObject {
   height: number;
   href: string;
@@ -28,30 +20,6 @@ export interface LinksObject {
   width: number;
 }
 
-export interface NasaObjectResult {
-  center: string;
-  date_created: string;
-  description: string;
-  keywords: [];
-  media_type: string;
-  nasa_id: string;
-  title: string;
-}
-
-export interface NasaCard {
-  title: string;
-  thumbUrl: string;
-}
-
-export interface ApodData {
-  date: string;
-  explanation: string;
-  hdurl: string;
-  media_type: string;
-  service_version: string;
-  title: string;
-  url: string;
-}
 /* Pokemon */
 
 export interface Pokemon {
