@@ -26,7 +26,7 @@ export const Pokemon = () => {
             {pokemon && <div className='main_container'>
                 {pokemon.map((pok: PokemonFinalObject, index: number) => {
                     return (
-                        <PokemonCard pok={pok} />
+                        <PokemonCard pok={pok} key={index} />
                     )
                 })}
             </div>}

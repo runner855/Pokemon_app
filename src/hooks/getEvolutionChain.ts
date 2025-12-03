@@ -1,14 +1,10 @@
-import {
-  PokemonDetailsObject,
-  PokemonSpecies,
-  PokemonFlavorTextEntry,
-} from "../type/appTypes";
+import { PokemonSpecies } from "../type/appTypes";
 
-export async function getPokemonDetails(
-  id: number
-): Promise<PokemonDetailsObject | null> {
+export async function getEvolutionChain(id: number): Promise<any> {
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/evolution-chain/${id}`
+    );
     if (!response.ok) return null;
 
     const pokemon = await response.json();
@@ -17,7 +13,10 @@ export async function getPokemonDetails(
     if (!speciesResponse.ok) return null;
 
     const species: PokemonSpecies = await speciesResponse.json();
-    console.log("species", species);
+
+    const evolutionChainresponse = await fetch(species.evolution_chain.url);
+
+    console.log("chain", evolutionChainresponse);
     const height = pokemon.height;
     const weight = pokemon.weight;
     const experience = pokemon.base_experience;
@@ -29,16 +28,6 @@ export async function getPokemonDetails(
     const types = pokemon.types.map((item: any) => {
       return item.type.name;
     });
-
-    console.log("types", types);
-
-    const descriptionEntry = species.flavor_text_entries.find(
-      (entry: PokemonFlavorTextEntry) => entry.language.name === "en"
-    );
-
-    const description = descriptionEntry
-      ? descriptionEntry.flavor_text.replace(/\n|\f/g, " ")
-      : "No description available.";
 
     return {
       id: pokemon.id,
@@ -52,7 +41,6 @@ export async function getPokemonDetails(
       growth,
       habitat,
       types,
-      description,
       images: {
         One: pokemon.sprites.other["official-artwork"].front_default,
         Two: pokemon.sprites.other["home"].front_default,

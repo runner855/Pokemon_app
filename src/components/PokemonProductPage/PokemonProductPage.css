@@ -1,0 +1,19 @@
+.principal_container {
+  width: 100%;
+  display: flex;
+}
+
+.container_left {
+  width: 70%;
+  border: solid 0.1em red;
+}
+
+.img_one {
+  width: 70%;
+  text-align: center;
+}
+
+.sidebar_right {
+  width: 30%;
+  border: solid 0.1em rgb(12, 8, 210);
+}

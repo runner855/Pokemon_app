@@ -1,0 +1,24 @@
+.img_one_top {
+  width: 100%;
+  margin: auto;
+}
+
+.img_two {
+  order: 2;
+  width: 50%;
+}
+
+.img_three {
+  order: 3;
+  width: 50%;
+}
+
+.img_four {
+  order: 4;
+  width: 50%;
+}
+
+.img_five {
+  order: 5;
+  width: 50%;
+}

@@ -2,6 +2,7 @@ export enum AppUrls {
   HOME = "/home",
   POKEMON = "/pokemon",
   POKEMON_DETAILS = "/pokemon/pokemon_details",
+  POKEMON_FAVORITES = "/favorites",
 }
 
 export interface SearchBarProps {
@@ -309,9 +310,28 @@ export interface PokemonDetailsImages {
   Three: string;
 }
 
+export interface PokemonTypesObject {
+  name: string;
+  url: string;
+}
+
+export interface PokemonTypes {
+  slot: number;
+  type: PokemonTypesObject;
+}
+
 export interface PokemonDetailsObject {
   id: number;
   name: string;
+  height: number;
+  weight: number;
+  happiness: number;
+  experience: number;
+  capture_rate: number;
+  color: string;
+  growth: string;
+  habitat: string;
+  types: PokemonTypes[];
   description: string;
   images: PokemonDetailsImages;
 }
@@ -327,6 +347,31 @@ export interface PokemonFlavorTextEntry {
   version: PokemonSpeciesLanguage;
 }
 
+export interface PokemonSpeciesColor {
+  name: string;
+  url: string;
+}
+
+export interface PokemonSpeciesGrowth {
+  name: string;
+  url: string;
+}
+
+export interface PokemonSpeciesHabitat {
+  name: string;
+  url: string;
+}
+
+export interface PokemonSpeciesEvolutionChain {
+  url: string;
+}
+
 export interface PokemonSpecies {
   flavor_text_entries: PokemonFlavorTextEntry[];
+  base_happiness: number;
+  capture_rate: number;
+  color: PokemonSpeciesColor;
+  growth_rate: PokemonSpeciesGrowth;
+  habitat: PokemonSpeciesHabitat;
+  evolution_chain: PokemonSpeciesEvolutionChain;
 }
