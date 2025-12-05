@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { getPokemonDetails } from '../../hooks/getPokemonDetails';
 import { SideBarLeft } from '../SideBarLeft/SideBarLeft';
 import { SideBarRight } from '../SideBarRight/SideBarRight';
+import { getEvolutionChain } from '../../hooks/getEvolutionChain';
 
 export const PokemonProductPage = () => {
     const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsObject | null>(null);

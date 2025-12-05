@@ -8,10 +8,16 @@
   margin-left: 1em;
   margin-bottom: 1em;
   color: #fff;
+  display: flex;
+  flex-direction: row;
 }
 
 .name svg {
-  margin-left: 15em;
+  margin-left: 1em;
+}
+
+.name svg:hover {
+  cursor: pointer;
 }
 
 .description,

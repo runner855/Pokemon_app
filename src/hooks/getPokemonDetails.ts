@@ -17,7 +17,7 @@ export async function getPokemonDetails(
     if (!speciesResponse.ok) return null;
 
     const species: PokemonSpecies = await speciesResponse.json();
-    console.log("species", species);
+
     const height = pokemon.height;
     const weight = pokemon.weight;
     const experience = pokemon.base_experience;
@@ -29,8 +29,6 @@ export async function getPokemonDetails(
     const types = pokemon.types.map((item: any) => {
       return item.type.name;
     });
-
-    console.log("types", types);
 
     const descriptionEntry = species.flavor_text_entries.find(
       (entry: PokemonFlavorTextEntry) => entry.language.name === "en"

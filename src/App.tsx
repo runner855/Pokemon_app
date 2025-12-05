@@ -7,9 +7,11 @@ import { Pokemon } from './components/Pokemon/Pokemon';
 import { PokemonDetails } from './components/PokemonDetails/PokemonDetails';
 import { PokemonProductPage } from './components/PokemonProductPage/PokemonProductPage';
 import { PokemonFavorites } from './components/PokemonFavorites/PokemonFavorites';
+import { ShoppingBasket } from './components/ShoppingBasket/ShoppingBasket';
+import { PokemonDetailsObject } from './type/appTypes';
 
 
-export const App = () => {
+export const App = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject | null }) => {
 
 
 
@@ -23,6 +25,7 @@ export const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/pokemon" element={<Pokemon />} />
         <Route path="/pokemon/:id" element={<PokemonProductPage />} />
+        <Route path="/pokemon/:id" element={<ShoppingBasket PokemonDetails={PokemonDetails} />} />
         <Route path="/favorites" element={<PokemonFavorites />} />
 
       </Routes>

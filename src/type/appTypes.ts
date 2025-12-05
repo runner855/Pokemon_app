@@ -362,6 +362,27 @@ export interface PokemonSpeciesHabitat {
   url: string;
 }
 
+export interface ChainObjectEvolvesTo {
+  species: PokemonSpeciesLanguage;
+  evolution_details: [];
+  evolves_to: [];
+  is_baby: boolean;
+  length: number;
+}
+
+export interface ChainObject {
+  evolution_details: [];
+  evolves_to: ChainObjectEvolvesTo[];
+  is_baby: boolean;
+  species: PokemonSpeciesLanguage;
+}
+
+export interface PokemonSpeciesEvolutionResponse {
+  baby_trigger_item: null;
+  chain: ChainObject;
+  id: number;
+}
+
 export interface PokemonSpeciesEvolutionChain {
   url: string;
 }

@@ -1,10 +1,19 @@
 import { PokemonSpecies } from "../type/appTypes";
 
+// Recursively extract species names from evolution chain
+function extractEvolutionNames(chain: any, arr: string[] = []) {
+  arr.push(chain.species.name);
+
+  if (chain.evolves_to.length > 0) {
+    chain.evolves_to.forEach((evo: any) => extractEvolutionNames(evo, arr));
+  }
+
+  return arr;
+}
+
 export async function getEvolutionChain(id: number): Promise<any> {
   try {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/evolution-chain/${id}`
-    );
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     if (!response.ok) return null;
 
     const pokemon = await response.json();
@@ -14,38 +23,31 @@ export async function getEvolutionChain(id: number): Promise<any> {
 
     const species: PokemonSpecies = await speciesResponse.json();
 
-    const evolutionChainresponse = await fetch(species.evolution_chain.url);
+    const evolutionResponse = await fetch(species.evolution_chain.url);
+    if (!evolutionResponse.ok) return null;
 
-    console.log("chain", evolutionChainresponse);
-    const height = pokemon.height;
-    const weight = pokemon.weight;
-    const experience = pokemon.base_experience;
-    const happiness = species.base_happiness;
-    const capture_rate = species.capture_rate;
-    const color = species.color.name;
-    const growth = species.growth_rate.name;
-    const habitat = species.habitat.name;
-    const types = pokemon.types.map((item: any) => {
-      return item.type.name;
-    });
+    const evolution = await evolutionResponse.json();
+    console.log("evolution", evolution);
+
+    const evolutionNames = extractEvolutionNames(evolution.chain);
+
+    const EvolutionImages = await Promise.all(
+      evolutionNames.map(async (name) => {
+        const evoRes = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        if (!evoRes.ok) return { name, image: null };
+        const evoData = await evoRes.json();
+
+        return {
+          name,
+          image: evoData.sprites?.front_default ?? null,
+        };
+      })
+    );
 
     return {
-      id: pokemon.id,
-      name: pokemon.name,
-      height,
-      weight,
-      happiness,
-      experience,
-      capture_rate,
-      color,
-      growth,
-      habitat,
-      types,
-      images: {
-        One: pokemon.sprites.other["official-artwork"].front_default,
-        Two: pokemon.sprites.other["home"].front_default,
-        Three: pokemon.sprites.other["dream_world"].front_default,
-      },
+      id: evolution.id,
+      name: evolution.chain.species.name,
+      EvolutionImages,
     };
   } catch (error) {
     console.error("Error in getPokemonDetails:", error);
