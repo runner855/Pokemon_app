@@ -33,7 +33,6 @@ export const SideBarRight = (
     const handleClick = () => {
         if (shoppingCartValue !== undefined) {
             setShoppingCartValue(shoppingCartValue + 1);
-            setCart([])
         }
     }
 
@@ -49,8 +48,6 @@ export const SideBarRight = (
 
     if (!PokemonDetails) return null;
 
-    console.log(PokemonDetails, "here")
-
     return (
         <>
 
@@ -59,7 +56,7 @@ export const SideBarRight = (
                     <div onClick={handleFavoriteClick}>
                         {favoriteClick ? <MdFavorite /> : <MdFavoriteBorder />}
                     </div>
-                    <FaShoppingBag onClick={() => navigate(`pokemon/${PokemonDetails.id}/basket`)} />{shoppingCartValue > 0 ? shoppingCartValue : ""}
+                    <FaShoppingBag onClick={() => navigate(`/basket`)} />{shoppingCartValue > 0 ? shoppingCartValue : ""}
                 </div>
                 <PokemonEvolution />
                 <div className='height'>Height: {PokemonDetails.height}</div>
