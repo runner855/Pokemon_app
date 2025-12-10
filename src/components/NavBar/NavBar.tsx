@@ -3,7 +3,7 @@ import "./NavBar.css";
 import { NavBarStructure } from '../../utilities/utility';
 import { NavLink } from 'react-router-dom';
 
-export const NavBar = () => {
+export const NavBar = ({shoppingCartValue}:{shoppingCartValue:number}) => {
     return ( 
         <nav className='main_container'>
             <ul className='nav'>
@@ -15,6 +15,7 @@ export const NavBar = () => {
                     )
                 })}
             </ul>
+            <p className='value'>{`shoppingCartValue: ${shoppingCartValue}`}</p>
         </nav>
      );
 }

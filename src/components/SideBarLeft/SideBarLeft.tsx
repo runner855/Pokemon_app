@@ -3,8 +3,7 @@ import { PokemonDetailsObject } from '../../type/appTypes';
 import "./SideBarLeft.css"
 
 export const SideBarLeft = ({ PokemonDetails }: { PokemonDetails : PokemonDetailsObject | null }) => {
-    return ( 
-        
+    return (         
         <>
             {PokemonDetails &&
                 <div className='images_container'>

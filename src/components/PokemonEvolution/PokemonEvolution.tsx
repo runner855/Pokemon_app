@@ -19,11 +19,7 @@ export const PokemonEvolution = () => {
     
         fetchPokemonEvolution();
     }, [params.id]);
-
-    console.log("count", pokemonEvolution?.EvolutionImages.length)
-    
-    
-    
+   
     return (
         <>
             <div className='evolution_main_container'>

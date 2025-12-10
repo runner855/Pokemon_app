@@ -1,3 +1,7 @@
+.basket_title {
+  color: #fff;
+}
+
 .basket_container {
   color: #fff;
 }
@@ -75,4 +79,8 @@ button {
   line-height: 1.6;
   margin-left: 1em;
   color: #fff;
+}
+
+.value {
+  color: red;
 }

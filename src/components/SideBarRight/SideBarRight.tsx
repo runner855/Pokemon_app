@@ -3,16 +3,40 @@ import { PokemonDetailsObject } from '../../type/appTypes';
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
 import { PokemonEvolution } from '../PokemonEvolution/PokemonEvolution';
+import { useNavigate } from "react-router";
 import "./SideBarRight.css"
-import { ShoppingBasket } from '../ShoppingBasket/ShoppingBasket';
-export const SideBarRight = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject | null }) => {
-    const [shoppingCartValue, setShoppingCartValue] = useState<number>(0);
+
+import { Basket } from '../Basket/Basket';
+
+interface SideBar {
+    PokemonDetails: PokemonDetailsObject | null;
+    cart: string[];
+    setCart: React.Dispatch<React.SetStateAction<never[]>>,
+    shoppingCartValue: number,
+    setShoppingCartValue: React.Dispatch<React.SetStateAction<number>> 
+}
+export const SideBarRight = (
+    {
+        PokemonDetails,
+        cart,
+        setCart,
+        shoppingCartValue,
+        setShoppingCartValue
+    }: SideBar) => {
+    
+    //  const [shoppingCartValue, setShoppingCartValue] = useState<number >(0);
     const [favoriteClick, setFavoriteClick] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
 
+    const navigate = useNavigate();
+
     const handleClick = () => {
-        setShoppingCartValue(shoppingCartValue +1)
+        if (shoppingCartValue !== undefined) {
+            setShoppingCartValue(shoppingCartValue + 1);
+            setCart([])
+        }
     }
+
 
     const handleFavoriteClick = () => {
         setFavoriteClick(!favoriteClick)
@@ -25,15 +49,17 @@ export const SideBarRight = ({ PokemonDetails }: { PokemonDetails: PokemonDetail
 
     if (!PokemonDetails) return null;
 
+    console.log(PokemonDetails, "here")
+
     return (
         <>
-            {open ? <ShoppingBasket PokemonDetails={PokemonDetails}/> :<div>
-                <div className='name'>
+
+             <div className='name'>
                     {PokemonDetails.name}
                     <div onClick={handleFavoriteClick}>
                         {favoriteClick ? <MdFavorite /> : <MdFavoriteBorder />}
                     </div>
-                    <FaShoppingBag onClick={handleDialogOnClick } />{shoppingCartValue > 0 ? shoppingCartValue : ""}
+                    <FaShoppingBag onClick={() => navigate(`pokemon/${PokemonDetails.id}/basket`)} />{shoppingCartValue > 0 ? shoppingCartValue : ""}
                 </div>
                 <PokemonEvolution />
                 <div className='height'>Height: {PokemonDetails.height}</div>
@@ -56,7 +82,7 @@ export const SideBarRight = ({ PokemonDetails }: { PokemonDetails: PokemonDetail
                 <div className='add_to_basket_btn'>
                     <button onClick={handleClick}>Add To Basket</button>
                 </div>
-            </div>}
+            
             </>
     );
 };

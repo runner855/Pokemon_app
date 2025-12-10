@@ -3,7 +3,7 @@ import { normalizePokemon } from "../normalizer/PokemonNormalizer";
 
 export const getPokemon = async () => {
   try {
-    const res = await pokemonApiCall.get(`pokemon`);
+    const res = await pokemonApiCall.get(`pokemon?offset=25&limit=25`);
 
     const PokemongenOne = res.data;
 

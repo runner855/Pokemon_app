@@ -27,8 +27,6 @@ export async function getEvolutionChain(id: number): Promise<any> {
     if (!evolutionResponse.ok) return null;
 
     const evolution = await evolutionResponse.json();
-    console.log("evolution", evolution);
-
     const evolutionNames = extractEvolutionNames(evolution.chain);
 
     const EvolutionImages = await Promise.all(
