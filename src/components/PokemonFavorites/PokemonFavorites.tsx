@@ -1,9 +1,20 @@
 import React from 'react';
+import { FavoriteItem } from '../../type/appTypes';
+import { FavoritesCard } from '../FavoritesCard/FavoritesCard';
 import "./PokemonFavorites.css"
 
-export const PokemonFavorites = () => {
+export const PokemonFavorites = ({ favorites }: { favorites: FavoriteItem[]; }) => {
+ 
     return ( 
-        <div className='title_favorites'>PokemonFavorites</div>
+        <>
+             {favorites &&  <div className='main_container'>
+                            {favorites.map((favorites: FavoriteItem, index: number) => {
+                                return (
+                                    <FavoritesCard favorites={favorites} key={index} />
+                                )
+                            })}
+                        </div>}
+        </>
      );
 }
  

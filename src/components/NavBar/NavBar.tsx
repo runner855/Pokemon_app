@@ -15,7 +15,6 @@ export const NavBar = ({shoppingCartValue}:{shoppingCartValue:number}) => {
                     )
                 })}
             </ul>
-            <p className='value'>{`shoppingCartValue: ${shoppingCartValue}`}</p>
         </nav>
      );
 }
