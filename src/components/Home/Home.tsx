@@ -7,7 +7,10 @@ export const Home = () => {
             Welcome!!
             <div>
 
-            <img loading='lazy' src="https://pngimg.com/d/pokemon_PNG98.png" alt="welcome_img"/>
+                <img
+                    src="https://pngimg.com/d/pokemon_PNG98.png"
+                    alt="welcome_img"
+                    loading='lazy' />
             </div>
            
         </div>
