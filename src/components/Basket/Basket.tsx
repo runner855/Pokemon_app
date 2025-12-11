@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { MdClear } from "react-icons/md";
 import { SideBarRight } from '../SideBarRight/SideBarRight';
 import { RiDeleteBinFill } from "react-icons/ri";
-import { PokemonDetailsObject } from '../../type/appTypes';
+import { FavoriteItem, PokemonDetailsObject } from '../../type/appTypes';
 import { useNavigate } from "react-router";
 import "./Basket.css"
 
 interface ShoppingBasketProps {
-    PokemonDetails: PokemonDetailsObject | null;
     shoppingCartValue: number;
     setShoppingCartValue: (value: number) => void;
+      favorites: FavoriteItem[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>,
 }
-export const Basket: React.FC<ShoppingBasketProps> = ({ PokemonDetails, shoppingCartValue, setShoppingCartValue }) => {
+export const Basket: React.FC<ShoppingBasketProps> = ({  shoppingCartValue, setShoppingCartValue }) => {
     const [exit, setExit] = useState(false);
     const [deleteItem, setDeleteItem] = useState(false);
 
@@ -36,7 +37,6 @@ export const Basket: React.FC<ShoppingBasketProps> = ({ PokemonDetails, shopping
 
     }
 
-console.log(PokemonDetails)
     return (
         <>
             

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./PokemonProductPage.css";
-import { PokemonDetailsObject } from '../../type/appTypes';
+import { FavoriteItem, PokemonDetailsObject } from '../../type/appTypes';
 import { SideBarLeft } from '../SideBarLeft/SideBarLeft';
 import { SideBarRight } from '../SideBarRight/SideBarRight';
 import { useParams } from "react-router-dom";
@@ -11,14 +11,20 @@ interface IPokemonProductPage {
     cart: string[];
     setCart: React.Dispatch<React.SetStateAction<never[]>>,
     shoppingCartValue: number,
-    setShoppingCartValue: React.Dispatch<React.SetStateAction<number>>
+    setShoppingCartValue: React.Dispatch<React.SetStateAction<number>>,
+    favorites: FavoriteItem[];
+setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>
+
 }
+
 
 export const PokemonProductPage: React.FC<IPokemonProductPage> = ({
     cart,
     setCart,
     shoppingCartValue,
     setShoppingCartValue,
+    favorites,
+    setFavorites
 }) => {
 
     const params = useParams();
@@ -38,11 +44,7 @@ export const PokemonProductPage: React.FC<IPokemonProductPage> = ({
         };
 
         fetchPokemonDetails();
-    }, [params.id, pokemonDetails]);
-
-    console.log("details", pokemonDetails)
-
-
+    }, [params.id]);
 
     return (
         <div className='principal_container'>
@@ -57,6 +59,8 @@ export const PokemonProductPage: React.FC<IPokemonProductPage> = ({
                     setCart={setCart}
                     shoppingCartValue={shoppingCartValue}
                     setShoppingCartValue={setShoppingCartValue}
+                    favorites={favorites}
+                    setFavorites={setFavorites}
                 />
             </div>
         </div>

@@ -2,15 +2,19 @@ import React, { useState } from 'react';
 import { MdClear } from "react-icons/md";
 import { SideBarRight } from '../SideBarRight/SideBarRight';
 import { RiDeleteBinFill } from "react-icons/ri";
-import { PokemonDetailsObject } from '../../type/appTypes';
+import { FavoriteItem, PokemonDetailsObject } from '../../type/appTypes';
 import "./ShoppingBasket.css"
 
 interface ShoppingBasketProps {
     PokemonDetails: PokemonDetailsObject | null;
     shoppingCartValue: number;
-    setShoppingCartValue: (value: number) => void;
+    setShoppingCartValue: React.Dispatch<React.SetStateAction<number>>;
+       favorites: FavoriteItem[];
+   setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>,
+      cart: string[];
+        setCart: React.Dispatch<React.SetStateAction<never[]>>,
 }
-export const ShoppingBasket: React.FC<ShoppingBasketProps> = ({ PokemonDetails, shoppingCartValue, setShoppingCartValue }) => {
+export const ShoppingBasket: React.FC<ShoppingBasketProps> = ({ PokemonDetails, shoppingCartValue, setShoppingCartValue, cart, setCart, favorites, setFavorites }) => {
     const [exit, setExit] = useState(false);
     const [deleteItem, setDeleteItem] = useState(false);
 
@@ -37,11 +41,8 @@ export const ShoppingBasket: React.FC<ShoppingBasketProps> = ({ PokemonDetails, 
 
     return (
         <>
-            {exit ? <SideBarRight PokemonDetails={PokemonDetails} cart={[]} setCart={function (value: React.SetStateAction<never[]>): void {
-                throw new Error('Function not implemented.');
-            } } shoppingCartValue={0} setShoppingCartValue={function (value: React.SetStateAction<number>): void {
-                throw new Error('Function not implemented.');
-            } } /> :
+            {exit ? <SideBarRight PokemonDetails={PokemonDetails} cart={cart} setCart={setCart} favorites={favorites} setFavorites={setFavorites} shoppingCartValue={0}
+                setShoppingCartValue={setShoppingCartValue} /> :
                 <div className='basket_container'>
                     {shoppingCartValue > 0 && PokemonDetails && deleteItem === false ?
                         <div className='basket_card'>

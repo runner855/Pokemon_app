@@ -396,3 +396,10 @@ export interface PokemonSpecies {
   habitat: PokemonSpeciesHabitat;
   evolution_chain: PokemonSpeciesEvolutionChain;
 }
+
+export interface FavoriteItem {
+  id: number;
+  name: string;
+  image: string;
+  favorite: boolean;
+}
