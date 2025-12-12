@@ -42,6 +42,9 @@ export const App = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject |
         <Route path="/pokemon" element={<Pokemon pokemon={pokemon} />} />
         <Route path="/pokemon/:id" element={<PokemonProductPage cart={cart} setCart={setCart} shoppingCartValue={shoppingCartValue} setShoppingCartValue={setShoppingCartValue}
           favorites={favorites} setFavorites={setFavorites} />} />
+         <Route path="/:page/:id" element={<PokemonProductPage cart={cart} setCart={setCart} shoppingCartValue={shoppingCartValue} setShoppingCartValue={setShoppingCartValue}
+          favorites={favorites} setFavorites={setFavorites} />} />
+        
         <Route path="/basket" element={<Basket shoppingCartValue={shoppingCartValue} setShoppingCartValue={setShoppingCartValue}
           favorites={favorites} setFavorites={setFavorites} />} />
         <Route path="/favorites" element={<PokemonFavorites favorites={favorites} />} />

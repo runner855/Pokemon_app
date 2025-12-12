@@ -1,4 +1,4 @@
-.card {
+.favorites_card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
@@ -9,20 +9,15 @@
   width: 16.2em;
 }
 
-.card {
+.favorites_card {
   margin: 0.6em;
 }
 
-.cards_container {
-  max-width: 100%;
-  max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  display: grid;
-  gap: 1rem;
+.favorites_card:hover {
+  cursor: pointer;
 }
 
-.pokemon_img {
+.favorite_pokemon_img {
   height: 12em;
   width: 16em;
   border-radius: 1em;
@@ -33,7 +28,7 @@
   width: 18em;
 }
 
-.title {
+.favorite_title {
   font-size: 1.6em;
   font-weight: 800;
 }

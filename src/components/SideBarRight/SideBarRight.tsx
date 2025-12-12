@@ -58,8 +58,6 @@ export const SideBarRight = ({
         });
     };
 
-    console.log("fav", favorites)
-
     return (
         <>
             <div className='name'>
