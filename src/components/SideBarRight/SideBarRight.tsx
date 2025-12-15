@@ -53,6 +53,7 @@ export const SideBarRight = ({
                     name: PokemonDetails.name,
                     image: PokemonDetails.images.One,
                     favorite: true,
+                    
                 }
             ];
         });

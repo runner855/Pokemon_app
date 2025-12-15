@@ -403,3 +403,8 @@ export interface FavoriteItem {
   image: string;
   favorite: boolean;
 }
+
+export interface PokemonFavoritesProps {
+  favorites: FavoriteItem[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import HomeImg from "./home_img.png"
 import  "./home.css";
 
 export const Home = () => {
@@ -8,7 +9,7 @@ export const Home = () => {
             <div>
 
                 <img
-                    src="https://pngimg.com/d/pokemon_PNG98.png"
+                    src={HomeImg}
                     alt="welcome_img"
                     loading='lazy' />
             </div>

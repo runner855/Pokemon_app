@@ -3,6 +3,7 @@ import { PokemonFinalObject } from '../../type/appTypes';
 import { useNavigate } from "react-router";
 import "./PokemonCard.css";
 
+
 export const PokemonCard = ({ pok }: { pok: PokemonFinalObject }) => {
     const navigate = useNavigate();
 
