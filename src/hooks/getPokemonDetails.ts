@@ -1,3 +1,4 @@
+import { PokemonDetails } from "../components/PokemonDetails/PokemonDetails";
 import {
   PokemonDetailsObject,
   PokemonSpecies,
@@ -55,6 +56,8 @@ export async function getPokemonDetails(
         One: pokemon.sprites.other["official-artwork"].front_default,
         Two: pokemon.sprites.other["home"].front_default,
         Three: pokemon.sprites.other["dream_world"].front_default,
+        Four: pokemon.sprites.front_default,
+        Five: pokemon.sprites.front_shiny,
       },
     };
   } catch (error) {

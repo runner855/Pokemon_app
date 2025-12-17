@@ -6,6 +6,8 @@ import { PokemonDetailsObject, PokemonFinalObject } from '../../type/appTypes';
 
 
 export const Pokemon: React.FC<{ pokemon: PokemonFinalObject[] | undefined }> = ({ pokemon }) => {
+
+    console.log(pokemon)
   
            
     return (

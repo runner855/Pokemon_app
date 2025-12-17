@@ -308,6 +308,8 @@ export interface PokemonDetailsImages {
   One: string;
   Two: string;
   Three: string;
+  Four: string;
+  Five: string;
 }
 
 export interface PokemonTypesObject {
@@ -407,4 +409,12 @@ export interface FavoriteItem {
 export interface PokemonFavoritesProps {
   favorites: FavoriteItem[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
+}
+
+export interface CartItem {
+  id: number;
+  name: string;
+  image: string;
+  isIntheCart: boolean;
+  quantity?: number;
 }

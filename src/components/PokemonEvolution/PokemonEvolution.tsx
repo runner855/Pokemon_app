@@ -2,8 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { getEvolutionChain } from '../../hooks/getEvolutionChain';
 import { useParams } from "react-router-dom";
 import "./PokemonEvolution.css";
+import { PokemonDetailsObject } from '../../type/appTypes';
 
-export const PokemonEvolution = () => {
+interface PokemonEvolutionProps {
+    mainImage: string;
+    setMainImage: React.Dispatch<React.SetStateAction<string>>
+    PokemonDetails: PokemonDetailsObject | null;
+    
+    
+    
+    
+}
+
+export const PokemonEvolution = ({mainImage, setMainImage, PokemonDetails}:PokemonEvolutionProps) => {
     const [pokemonEvolution, setPokemonEvolution] = useState<any>(null);
     const params = useParams();
 
@@ -29,7 +40,9 @@ export const PokemonEvolution = () => {
 
             {pokemonEvolution && pokemonEvolution.EvolutionImages.map((item: any, index:number) => {
                 return (
-                    <img className="evolution_img" src={item.image} alt="ev_img" key={index} />
+                    <div key={index}>
+                        <img className="evolution_img" src={item.image} alt="ev_img" key={index} onClick={() => setMainImage(`${item.image}`) } />
+                    </div>
                 )
 
             })}

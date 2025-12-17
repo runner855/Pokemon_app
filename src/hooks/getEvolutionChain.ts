@@ -1,6 +1,6 @@
+import { PokemonDetails } from "../components/PokemonDetails/PokemonDetails";
 import { PokemonSpecies } from "../type/appTypes";
 
-// Recursively extract species names from evolution chain
 function extractEvolutionNames(chain: any, arr: string[] = []) {
   arr.push(chain.species.name);
 

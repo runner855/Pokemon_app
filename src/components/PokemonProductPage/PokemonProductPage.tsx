@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./PokemonProductPage.css";
-import { FavoriteItem, PokemonDetailsObject } from '../../type/appTypes';
+import { CartItem, FavoriteItem, PokemonDetailsObject } from '../../type/appTypes';
 import { SideBarLeft } from '../SideBarLeft/SideBarLeft';
 import { SideBarRight } from '../SideBarRight/SideBarRight';
 import { useParams } from "react-router-dom";
@@ -8,12 +8,17 @@ import { getPokemonDetails } from '../../hooks/getPokemonDetails';
 import { PokemonDetails } from '../PokemonDetails/PokemonDetails';
 
 interface IPokemonProductPage {
-    cart: string[];
-    setCart: React.Dispatch<React.SetStateAction<never[]>>,
+    cart: CartItem[];
+    setCart: React.Dispatch<React.SetStateAction<CartItem[]>>,
     shoppingCartValue: number,
     setShoppingCartValue: React.Dispatch<React.SetStateAction<number>>,
     favorites: FavoriteItem[];
-setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>
+    setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>
+    mainImage: string;
+    setMainImage: React.Dispatch<React.SetStateAction<string>>
+    
+
+
 
 }
 
@@ -24,7 +29,10 @@ export const PokemonProductPage: React.FC<IPokemonProductPage> = ({
     shoppingCartValue,
     setShoppingCartValue,
     favorites,
-    setFavorites
+    setFavorites,
+    mainImage,
+    setMainImage,
+   
 }) => {
 
     const params = useParams();
@@ -33,23 +41,30 @@ export const PokemonProductPage: React.FC<IPokemonProductPage> = ({
 
 
     useEffect(() => {
-        const fetchPokemonDetails = async () => {
-            try {
-                const pokemonData = await getPokemonDetails(Number(params.id));
-                setPokemonDetails(pokemonData);
-                console.log(pokemonDetails)
-            } catch (error) {
-                console.error("Error fetching Pokemon:", error);
-            }
-        };
+    const fetchPokemonDetails = async () => {
+        try {
+            const pokemonData = await getPokemonDetails(Number(params.id));
+            if (!pokemonData) return; 
+            setPokemonDetails(pokemonData);
 
-        fetchPokemonDetails();
+            setMainImage(pokemonData.images.One);
+        } catch (error) {
+            console.error("Error fetching Pokemon:", error);
+        }
+    };
+
+    fetchPokemonDetails();
     }, [params.id]);
+    
 
     return (
         <div className='principal_container'>
             <div className='container_left'>
-                <SideBarLeft PokemonDetails={pokemonDetails} />
+                <SideBarLeft
+                    PokemonDetails={pokemonDetails}
+                    mainImage={mainImage}
+                    setMainImage={setMainImage}
+                />
             </div>
 
             <div className='sidebar_right'>
@@ -61,6 +76,8 @@ export const PokemonProductPage: React.FC<IPokemonProductPage> = ({
                     setShoppingCartValue={setShoppingCartValue}
                     favorites={favorites}
                     setFavorites={setFavorites}
+                    mainImage={mainImage}
+                    setMainImage={setMainImage}
                 />
             </div>
         </div>

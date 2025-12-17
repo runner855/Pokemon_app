@@ -22,10 +22,6 @@ export const FavoritesCard = ({ favorite, setFavorites}: FavoritesCardProps) => 
   );
     }
 
-    
-    
-   
-
     return (
         <div className='favorites_card' key={favorite.id}>
             <div className='favorite_image_container' onClick={() => navigate(`/pokemon/${favorite.id}`)}>

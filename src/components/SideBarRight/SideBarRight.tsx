@@ -1,19 +1,24 @@
 import React from 'react'
-import { FavoriteItem, PokemonDetailsObject } from '../../type/appTypes';
+import { CartItem, FavoriteItem, PokemonDetailsObject } from '../../type/appTypes';
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
 import { PokemonEvolution } from '../PokemonEvolution/PokemonEvolution';
 import { useNavigate } from "react-router";
 import "./SideBarRight.css"
 
-interface SideBar {
+interface SideBarRightProps {
     PokemonDetails: PokemonDetailsObject | null;
-    cart: string[];
-    setCart: React.Dispatch<React.SetStateAction<never[]>>,
+    cart: CartItem[];
+    setCart: React.Dispatch<React.SetStateAction<CartItem[]>>,
     shoppingCartValue: number,
     setShoppingCartValue: React.Dispatch<React.SetStateAction<number>>,
     favorites: FavoriteItem[];
     setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>,
+    mainImage: string;
+    setMainImage: React.Dispatch<React.SetStateAction<string>>
+   
+    
+    
 }
 
 export const SideBarRight = ({
@@ -23,8 +28,10 @@ export const SideBarRight = ({
     shoppingCartValue,
     setShoppingCartValue,
     favorites,
-    setFavorites
-}: SideBar) => {
+    setFavorites,
+    mainImage,
+    setMainImage,
+}: SideBarRightProps) => {
 
     const navigate = useNavigate();
 
@@ -59,6 +66,32 @@ export const SideBarRight = ({
         });
     };
 
+
+    const handleCart = () => {
+        navigate(`/basket`);
+        setCart(prev => {
+            const exists = prev.find(f => f.id === PokemonDetails.id);
+
+            if (exists) {
+                return prev.filter(f => f.id !== PokemonDetails.id);
+            }
+
+            return [
+                ...prev,
+                {
+                    id: PokemonDetails.id,
+                    name: PokemonDetails.name,
+                    image: PokemonDetails.images.One,
+                    isIntheCart: true,
+                    quantity: shoppingCartValue,
+
+
+                    
+                }
+            ];
+        });
+    };
+
     return (
         <>
             <div className='name'>
@@ -68,11 +101,16 @@ export const SideBarRight = ({
                     {isFavorite ? <MdFavorite /> : <MdFavoriteBorder />}
                 </div>
 
-                <FaShoppingBag onClick={() => navigate(`/basket`)} />
+                <FaShoppingBag onClick={handleCart} />
                 {shoppingCartValue > 0 ? shoppingCartValue : ""}
             </div>
 
-            <PokemonEvolution />
+            <PokemonEvolution
+                mainImage={mainImage}
+                setMainImage={setMainImage}
+                PokemonDetails={PokemonDetails}
+
+            />
 
             <div className='height'>Height: {PokemonDetails.height}</div>
             <div className='weight'>Weight: {PokemonDetails.weight}</div>

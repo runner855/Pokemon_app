@@ -3,7 +3,8 @@
   color: #fff;
 }
 
-.evolution_img {
+.evolution_img,
+.evolution_img_main {
   height: 4em;
   width: 4em;
   border: solid 0.1em white;
