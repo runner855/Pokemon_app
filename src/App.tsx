@@ -17,7 +17,6 @@ export const App = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject |
   const [pokemon, setPokemon] = useState<PokemonFinalObject[]>();
   const [shoppingCartValue, setShoppingCartValue] = useState<number>(0);
   const [mainImage, setMainImage] = useState('');
-  const [evolutionClick, setEvolutionClick] = useState(false);
   
 
      useEffect(() => {
@@ -70,7 +69,9 @@ export const App = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject |
           shoppingCartValue={shoppingCartValue}
           setShoppingCartValue={setShoppingCartValue}
           favorites={favorites}
-          setFavorites={setFavorites} />} />
+          setFavorites={setFavorites}
+          cart={cart}
+          setCart={setCart} />} />
         
         <Route path="/favorites" element={<PokemonFavorites
           favorites={favorites}

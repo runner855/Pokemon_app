@@ -1,6 +1,6 @@
-.basket_title {
-  text-align: center;
-  color: #fff;
-  font-weight: 800;
-  font-size: 3em;
+.cart_main_container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 1em;
 }

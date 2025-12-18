@@ -72,7 +72,7 @@ export const SideBarRight = ({
         setCart(prev => {
             const exists = prev.find(f => f.id === PokemonDetails.id);
 
-            if (exists) {
+            if (exists ) {
                 return prev.filter(f => f.id !== PokemonDetails.id);
             }
 
@@ -82,8 +82,10 @@ export const SideBarRight = ({
                     id: PokemonDetails.id,
                     name: PokemonDetails.name,
                     image: PokemonDetails.images.One,
+                    color:PokemonDetails.color,
                     isIntheCart: true,
                     quantity: shoppingCartValue,
+                  
 
 
                     
@@ -91,6 +93,7 @@ export const SideBarRight = ({
             ];
         });
     };
+
 
     return (
         <>

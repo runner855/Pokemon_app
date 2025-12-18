@@ -1,20 +1,23 @@
 import React, { useState } from "react";
-import { MdClear } from "react-icons/md";
-import { SideBarRight } from "../SideBarRight/SideBarRight";
-import { RiDeleteBinFill } from "react-icons/ri";
-import { FavoriteItem, PokemonDetailsObject } from "../../type/appTypes";
-import { useNavigate } from "react-router";
+import { CartItem, FavoriteItem } from "../../type/appTypes";
 import "./Basket.css";
+import { BasketCard } from "../BasketCard/BasketCard";
+import {  BasketSummary } from "../BasketSummary/BasketSummary";
 
 interface ShoppingBasketProps {
   shoppingCartValue: number;
   setShoppingCartValue: (value: number) => void;
   favorites: FavoriteItem[];
   setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
+  cart: CartItem[];
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+
+
 }
 export const Basket: React.FC<ShoppingBasketProps> = ({
   shoppingCartValue,
   setShoppingCartValue,
+  cart, setCart
 }) => {
   const [exit, setExit] = useState(false);
   const [deleteItem, setDeleteItem] = useState(false);
@@ -36,9 +39,22 @@ export const Basket: React.FC<ShoppingBasketProps> = ({
     setShoppingCartValue(0);
   };
 
+
   return (
+
     <>
-      <div className="basket_title">Basket</div>
+      {cart?.length > 0 &&
+        <div className='cart_main_container'>
+            {cart.map((item: CartItem, index: number) => {
+            return (
+              <BasketCard cart={item} key={index} />
+            )
+            })}
+          <div className="basket_summary">
+            <BasketSummary/>
+          </div>
+        </div>}
     </>
+
   );
 };

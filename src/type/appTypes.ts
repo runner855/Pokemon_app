@@ -415,6 +415,7 @@ export interface CartItem {
   id: number;
   name: string;
   image: string;
+  color: string;
   isIntheCart: boolean;
   quantity?: number;
 }
