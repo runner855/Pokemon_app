@@ -1,25 +1,21 @@
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
   margin: auto;
   text-align: center;
   font-family: arial;
   background-color: rgb(247, 245, 243);
-  border-radius: 1em;
-  width: 16.2em;
-}
-
-.card {
-  margin: 0.6em;
+  height: auto;
+  width: 100%;
+  display: block;
+  position: relative;
 }
 
 .cards_container {
-  max-width: 100%;
-  max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 64px;
+  padding-right: 64px;
   display: grid;
-  gap: 1rem;
 }
 
 .pokemon_img {

@@ -9,6 +9,7 @@ import { CartItem, FavoriteItem, PokemonDetailsObject, PokemonFinalObject } from
 import { Basket } from './components/Basket/Basket';
 import { getPokemon } from './hooks/getPokemon';
 import './App.css';
+import { Search } from './components/Search/Search';
 
 
 export const App = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject | null }) => {
@@ -76,6 +77,8 @@ export const App = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject |
         <Route path="/favorites" element={<PokemonFavorites
           favorites={favorites}
           setFavorites={setFavorites} />} />
+        
+        <Route path="/search" element={<Search/>}/>
     
 
       </Routes>

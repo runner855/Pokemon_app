@@ -2,11 +2,24 @@
   max-width: 100%;
   padding: 1em;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 12 1fr;
   gap: 1em;
   margin-top: 2em;
 }
 
+.pokemon_title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  color: #1f1f24;
+  text-overflow: ellipsis;
+  font-size: 40px;
+  font-style: normal;
+  line-height: 160%;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 8px;
+  margin-left: 0.4em;
+}
 @media (min-width: 600px) {
   .pokemon_container {
     grid-template-columns: repeat(2, 1fr);

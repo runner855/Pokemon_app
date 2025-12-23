@@ -12,13 +12,16 @@ export const Pokemon: React.FC<{ pokemon: PokemonFinalObject[] | undefined }> = 
            
     return (
         <>          
-            {pokemon &&  <div className='pokemon_container'>
+                    <div className='pokemon_title'>Pokemon</div>
+            {pokemon &&
+                <div className='pokemon_container'>
                 {pokemon.map((pok: PokemonFinalObject, index: number) => {
                     return (
                         <PokemonCard pok={pok} key={index} />
                     )
                 })}
-            </div>}
+                </div>
+            }
         </>
       );
 }
