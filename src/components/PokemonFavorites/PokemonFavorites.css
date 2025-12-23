@@ -7,7 +7,8 @@
   margin: auto;
 }
 
-.pokemon_title {
+.pokemon_favorite_title,
+.no_favorites_message {
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   color: #1f1f24;
@@ -20,14 +21,29 @@
   margin-bottom: 8px;
   margin-left: 0.4em;
 }
+
+.no_favorites_message {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  color: #1f1f24;
+  text-overflow: ellipsis;
+  font-size: 40px;
+  font-style: normal;
+  line-height: 160%;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 8px;
+  margin-left: 0.4em;
+  text-align: center;
+}
 @media (min-width: 600px) {
-  .pokemon_container {
+  .favorites_container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 900px) {
-  .pokemon_container {
+  .favorites_container {
     grid-template-columns: repeat(3, 1fr);
   }
 }

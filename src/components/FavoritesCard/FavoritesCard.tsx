@@ -22,22 +22,26 @@ export const FavoritesCard = ({ favorite, setFavorites}: FavoritesCardProps) => 
     }
 
     return (
-        <div className='favorites_card' key={favorite.id}>
-            <div className='favorite_image_container' onClick={() => navigate(`/pokemon/${favorite.id}`)}>
+        <>
+           
+                <div className='favorites_card' key={favorite.id}>
+                <div className='favorite_image_container' onClick={() => navigate(`/pokemon/${favorite.id}`)}>
 
-                <div className='favorite_icon' onClick={handleFavIconClick}>{favorite.favorite ?<MdFavorite />:<MdFavoriteBorder/>}</div>
-                <img
-                    className="favorite_pokemon_img"
-                    src={favorite.image || IMAGE_NOTFOUND_PLACEHOLDER}
-                    alt={favorite.name || 'Pokemon Image'}
-                    loading='lazy'
-                    onError={(e) => e.currentTarget.src = IMAGE_NOTFOUND_PLACEHOLDER}
-                />
-            </div>
-            <div className='favorite_title_container'>
-                {favorite.name && <div className='favorite_title'>{favorite.name.toUpperCase() || 'Title unavailable'}</div>}
-            </div>
-            </div>
+                    <div className='favorite_icon' onClick={handleFavIconClick}>{favorite.favorite ? <MdFavorite className='fav_icon_clicked' /> : <MdFavoriteBorder />}</div>
+                    <img
+                        className="favorite_pokemon_img"
+                        src={favorite.image || IMAGE_NOTFOUND_PLACEHOLDER}
+                        alt={favorite.name || 'Pokemon Image'}
+                        loading='lazy'
+                        onError={(e) => e.currentTarget.src = IMAGE_NOTFOUND_PLACEHOLDER}
+                    />
+                </div>
+                <div className='favorite_title_container'>
+                    {favorite.name && <div className='favorite_title'>{favorite.name.toUpperCase() || 'Title unavailable'}</div>}
+                </div>
+                </div>
+                                
+        </>
     );
 }
 

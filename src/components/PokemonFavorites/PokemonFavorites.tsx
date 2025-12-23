@@ -14,15 +14,26 @@ export const PokemonFavorites = ({
     setFavorites
 }: PokemonFavoritesProps) => {
 
+    console.log(favorites)
+
     return (
         <>
-            {favorites?.length > 0 && <div className='favorites_container'>
-                {favorites.map((favorite: FavoriteItem, index: number) => {
-                    return (
-                        <FavoritesCard favorite={favorite} key={favorite.id} setFavorites={setFavorites} />
-                    )
-                })}
-            </div>}
+            
+            <div className='pokemon_favorite_title'>Pokemon Favorites</div>
+                    {favorites?.length > 0 &&
+                    <div className='favorites_container'>
+                        {favorites.map((favorite: FavoriteItem, index: number) => {
+                            return (
+                                <FavoritesCard
+                                    favorite={favorite}
+                                    key={favorite.id}
+                                    setFavorites={setFavorites}
+                                />
+                            )
+                        })}
+                    </div>}
+               
+           
         </>
     );
 }

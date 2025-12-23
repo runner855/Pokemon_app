@@ -10,13 +10,13 @@
   position: relative;
 }
 
-.cards_container {
+/* .cards_container {
   margin-left: auto;
   margin-right: auto;
   padding-left: 64px;
   padding-right: 64px;
   display: grid;
-}
+} */
 
 .pokemon_img {
   height: 30em;
