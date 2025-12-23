@@ -46,8 +46,10 @@ export const Basket: React.FC<ShoppingBasketProps> = ({
       {cart?.length > 0 &&
         <div className='cart_main_container'>
             {cart.map((item: CartItem, index: number) => {
-            return (
-              <BasketCard cart={item} key={index} />
+              return (
+              <div className="basket_card" key={index}>
+                  <BasketCard cart={item}  />
+              </div>
             )
             })}
           <div className="basket_summary">

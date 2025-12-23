@@ -7,7 +7,10 @@ interface BasketProps {
     cart:CartItem
 }
 
+
+
 export const BasketCard = ({ cart }: BasketProps) => {
+    console.log(cart)
     return (
         <>
             {cart.quantity && cart.quantity >= 1 &&
@@ -17,9 +20,9 @@ export const BasketCard = ({ cart }: BasketProps) => {
                     </div>
                     <div className='cart_details'>
                     <div className='cart_name'>{cart.name}</div>
-                    <div className='color'>Color: {cart.color}</div>
+                        <div className='color_info'>{`Color: ${cart.color.toUpperCase()}`}</div>
 
-                    <div>{cart.quantity}</div>
+                    <div className='quantity'>{`Quantity: ${cart.quantity}`}</div>
                     </div>
                 </div>}
         </>

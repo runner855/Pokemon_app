@@ -7,7 +7,6 @@
 .basket_card {
   display: flex;
   flex-direction: row;
-  width: 70%;
 }
 
 .cart_name {
@@ -15,7 +14,7 @@
   font-weight: 800;
   font-size: 1.5em;
   line-height: 1em;
-  /* margin-bottom: 4px; */
+  margin-bottom: 0.5em;
   font-family: "Oswald", "HelveticaNeueBold", "Helvetica Neue",
     "TeXGyreHerosBold", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   text-transform: uppercase;
@@ -26,4 +25,15 @@
   height: 20em;
   width: 20em;
   background-color: #f2f2f2;
+}
+
+.color_info,
+.quantity {
+  color: black;
+  font-size: 1.2em;
+  line-height: 1em;
+  font-family: "Oswald", "HelveticaNeueBold", "Helvetica Neue",
+    "TeXGyreHerosBold", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  text-transform: uppercase;
+  margin: 0.8em;
 }

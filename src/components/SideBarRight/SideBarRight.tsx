@@ -36,9 +36,12 @@ export const SideBarRight = ({
     const navigate = useNavigate();
 
     const handleClick = () => {
-        if (shoppingCartValue !== undefined) {
-            setShoppingCartValue(shoppingCartValue + 1);
-        }
+        setShoppingCartValue(shoppingCartValue + 1)
+        
+                  
+
+
+        
     };
 
     if (!PokemonDetails) return null;
@@ -70,10 +73,14 @@ export const SideBarRight = ({
     const handleCart = () => {
         navigate(`/basket`);
         setCart(prev => {
-            const exists = prev.find(f => f.id === PokemonDetails.id);
+            const exists = prev.find(item => item.id === PokemonDetails.id);
 
             if (exists ) {
-                return prev.filter(f => f.id !== PokemonDetails.id);
+                return prev.map(item => 
+                    item.id === PokemonDetails.id
+                        ? { ...item, quantity: item.quantity && item.quantity + 1 }
+                        : item
+                );
             }
 
             return [
@@ -84,7 +91,7 @@ export const SideBarRight = ({
                     image: PokemonDetails.images.One,
                     color:PokemonDetails.color,
                     isIntheCart: true,
-                    quantity: shoppingCartValue,
+                    quantity: 1,
                   
 
 
@@ -93,6 +100,8 @@ export const SideBarRight = ({
             ];
         });
     };
+
+    
 
 
     return (
@@ -133,7 +142,7 @@ export const SideBarRight = ({
             </div>
 
             <div className='add_to_basket_btn'>
-                <button onClick={handleClick}>Add To Basket</button>
+                <button onClick={handleCart}>Add To Basket</button>
             </div>
         </>
     );

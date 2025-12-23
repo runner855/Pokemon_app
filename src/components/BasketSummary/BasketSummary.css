@@ -1,8 +1,24 @@
-.overview_title {
-  color: whitesmoke;
-  width: 30%;
+.summary_title {
+  color: rgb(6, 0, 0);
   font-size: 20px;
   line-height: 1.2;
   margin: 0;
   padding: 16px 0 2px;
+}
+
+.summary_container {
+  background-color: #fff;
+}
+
+.proceed_purchase_btn button {
+  background-color: red;
+  color: white;
+  font-family: Oswald, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.4em;
+  width: 10em;
 }

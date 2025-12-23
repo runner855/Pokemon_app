@@ -12,7 +12,7 @@ export const Pokemon: React.FC<{ pokemon: PokemonFinalObject[] | undefined }> = 
            
     return (
         <>          
-            {pokemon &&  <div className='main_container'>
+            {pokemon &&  <div className='pokemon_container'>
                 {pokemon.map((pok: PokemonFinalObject, index: number) => {
                     return (
                         <PokemonCard pok={pok} key={index} />
