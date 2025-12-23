@@ -11,7 +11,7 @@ export const PokemonFavorites: React.FC<PokemonFavoritesProps> = ({
  
     return ( 
         <>
-             {favorites?.length > 0 &&  <div className='main_container'>
+             {favorites?.length > 0 &&  <div className='favorites_container'>
                             {favorites.map((favorite: FavoriteItem, index: number) => {
                                 return (
                                     <FavoritesCard favorite={favorite} key={favorite.id} setFavorites={setFavorites} />

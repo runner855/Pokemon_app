@@ -26,6 +26,7 @@ export const FavoritesCard = ({ favorite, setFavorites}: FavoritesCardProps) => 
         <div className='favorites_card' key={favorite.id}>
             <div className='favorite_image_container' onClick={() => navigate(`/pokemon/${favorite.id}`)}>
 
+                <div className='favorite_icon' onClick={handleFavIconClick}>{favorite.favorite ?<MdFavorite />:<MdFavoriteBorder/>}</div>
                 <img
                     className="favorite_pokemon_img"
                     src={favorite.image || IMAGE_NOTFOUND_PLACEHOLDER}
@@ -36,7 +37,6 @@ export const FavoritesCard = ({ favorite, setFavorites}: FavoritesCardProps) => 
             </div>
             <div className='favorite_title_container'>
                 {favorite.name && <div className='favorite_title'>{favorite.name.toUpperCase() || 'Title unavailable'}</div>}
-                <div className='favorite_icon' onClick={handleFavIconClick}>{favorite.favorite ?<MdFavorite />:<MdFavoriteBorder/>}</div>
             </div>
             </div>
     );

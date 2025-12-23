@@ -12,6 +12,7 @@ export const PokemonCard = ({ pok }: { pok: PokemonFinalObject }) => {
     return (
         <div className='card' key={pok.id} onClick={() => navigate(`/pokemon/${pok.id}`)}>
             <div className='image_container'>
+                
 
                 <img
                     className="pokemon_img"

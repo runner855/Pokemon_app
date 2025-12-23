@@ -90,7 +90,7 @@ export const SideBarRight = ({
                 {PokemonDetails.name}
 
                 <div onClick={handleFavoriteClick}>
-                    {isFavorite ? <MdFavorite /> : <MdFavoriteBorder />}
+                    {isFavorite ? <MdFavorite className='favoriteIcon_clicked'/> : <MdFavoriteBorder />}
                 </div>
         
             </div>

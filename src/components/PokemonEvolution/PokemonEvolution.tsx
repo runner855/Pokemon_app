@@ -35,7 +35,7 @@ export const PokemonEvolution = ({mainImage, setMainImage, PokemonDetails}:Pokem
         <>
             <div className='evolution_main_container'>
 
-                <div className='evolution_count'>{`${pokemonEvolution && pokemonEvolution.EvolutionImages.length} Evolutions Available!`}</div>
+                <div className='evolution_count'>{`${pokemonEvolution && pokemonEvolution.EvolutionImages.length} Evolutions Available`}</div>
             <div className='evolution_images_container'>
 
             {pokemonEvolution && pokemonEvolution.EvolutionImages.map((item: any, index:number) => {

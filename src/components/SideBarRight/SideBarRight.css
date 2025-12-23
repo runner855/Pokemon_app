@@ -13,7 +13,7 @@
 }
 
 .name svg {
-  margin-left: 1em;
+  margin-left: 10em;
 }
 
 .name svg:hover {
@@ -63,4 +63,8 @@
 .add_to_basket_btn {
   text-align: center;
   margin: 2em;
+}
+
+.favoriteIcon_clicked {
+  color: red;
 }

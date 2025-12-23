@@ -2,9 +2,9 @@
   max-width: 100%;
   padding: 1em;
   display: grid;
-  grid-template-columns: 12 1fr;
+  grid-template-columns: 1fr;
   gap: 1em;
-  margin-top: 2em;
+  margin: auto;
 }
 
 .pokemon_title {
@@ -28,6 +28,6 @@
 
 @media (min-width: 900px) {
   .pokemon_container {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
