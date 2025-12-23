@@ -40,7 +40,7 @@ a:hover {
   padding: 1em 20px;
   box-sizing: border-box;
 
-  background-color: #fcfcfb;
+  background-color: #fff;
   border-bottom: 0.2em solid #000;
   z-index: 99999 !important;
 }

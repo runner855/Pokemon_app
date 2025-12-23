@@ -69,9 +69,13 @@ export const SideBarRight = ({
         });
     };
 
+    const handleAddToCartClick = () => {
+        navigate(`/basket`);
+
+    }
+
 
     const handleCart = () => {
-        navigate(`/basket`);
         setCart(prev => {
             const exists = prev.find(item => item.id === PokemonDetails.id);
 
@@ -101,6 +105,7 @@ export const SideBarRight = ({
         });
     };
 
+    console.log(shoppingCartValue)
     
 
 
@@ -113,7 +118,7 @@ export const SideBarRight = ({
                     {isFavorite ? <MdFavorite /> : <MdFavoriteBorder />}
                 </div>
 
-                <FaShoppingBag onClick={handleCart} />
+                <FaShoppingBag onClick={handleAddToCartClick} />
                 {shoppingCartValue > 0 ? shoppingCartValue : ""}
             </div>
 
