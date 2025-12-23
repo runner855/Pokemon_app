@@ -1,9 +1,8 @@
 import React from 'react';
-import { FavoriteItem, PokemonFavoritesProps } from '../../type/appTypes';
+import { FavoriteItem } from '../../type/appTypes';
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useNavigate } from "react-router";
 import "./FavoritesCard.css";
-import { PokemonDetails } from '../PokemonDetails/PokemonDetails';
 
 interface FavoritesCardProps {
   favorite: FavoriteItem;

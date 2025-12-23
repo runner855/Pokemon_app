@@ -1,24 +1,29 @@
 import React from 'react';
-import { FavoriteItem, PokemonFavoritesProps } from '../../type/appTypes';
+import { FavoriteItem } from '../../type/appTypes';
 import { FavoritesCard } from '../FavoritesCard/FavoritesCard';
 import "./PokemonFavorites.css";
 
-export const PokemonFavorites: React.FC<PokemonFavoritesProps> = ({
+interface PokemonFavoritesProps {
+    favorites: FavoriteItem[];
+    setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
+
+}
+
+export const PokemonFavorites = ({
     favorites,
     setFavorites
-    
-}) => {
- 
-    return ( 
+}: PokemonFavoritesProps) => {
+
+    return (
         <>
-             {favorites?.length > 0 &&  <div className='favorites_container'>
-                            {favorites.map((favorite: FavoriteItem, index: number) => {
-                                return (
-                                    <FavoritesCard favorite={favorite} key={favorite.id} setFavorites={setFavorites} />
-                                )
-                            })}
-                        </div>}
+            {favorites?.length > 0 && <div className='favorites_container'>
+                {favorites.map((favorite: FavoriteItem, index: number) => {
+                    return (
+                        <FavoritesCard favorite={favorite} key={favorite.id} setFavorites={setFavorites} />
+                    )
+                })}
+            </div>}
         </>
-     );
+    );
 }
- 
+

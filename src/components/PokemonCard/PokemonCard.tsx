@@ -1,17 +1,41 @@
 import React from 'react';
-import { PokemonFinalObject } from '../../type/appTypes';
+import { FavoriteItem, PokemonFinalObject } from '../../type/appTypes';
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useNavigate } from "react-router";
 import "./PokemonCard.css";
 
+interface PokemonCardProps {
+    pok: PokemonFinalObject;
+    favorites: FavoriteItem[];
+    setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
+}
 
-export const PokemonCard = ({ pok }: { pok: PokemonFinalObject }) => {
+
+export const PokemonCard = ({ pok, favorites, setFavorites }:PokemonCardProps) => {
     const navigate = useNavigate();
 
+      const isFavorite = favorites.some(f => f.id === pok.id);
+
     const IMAGE_NOTFOUND_PLACEHOLDER = 'https://nftcalendar.io/storage/uploads/2022/02/21/image-not-found_0221202211372462137974b6c1a.png';
+
+    const handleFavIconClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFavorites(prev =>
+      isFavorite
+        ? prev.filter(f => f.id !== pok.id)
+            : [...prev, {
+                id: pok.id,
+                name: pok.name,
+                image: pok.mainImage,
+                favorite: true
+            }]
+    );
+  };
 
     return (
         <div className='card' key={pok.id} onClick={() => navigate(`/pokemon/${pok.id}`)}>
             <div className='image_container'>
+                 <div className='pokemon_card_fav_icon' onClick={handleFavIconClick}>{isFavorite ?<MdFavorite className='pokemon_card_fav_icon_clicked'/>:<MdFavoriteBorder/>}</div>
                 
 
                 <img

@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import "./Pokemon.css";
 import { getPokemon } from '../../hooks/getPokemon';
 import { PokemonCard } from '../PokemonCard/PokemonCard';
-import { PokemonDetailsObject, PokemonFinalObject } from '../../type/appTypes';
+import { FavoriteItem, PokemonDetailsObject, PokemonFinalObject } from '../../type/appTypes';
 
 
-export const Pokemon: React.FC<{ pokemon: PokemonFinalObject[] | undefined }> = ({ pokemon }) => {
-
-    console.log(pokemon)
+interface PokemonProps {
+    pokemon: PokemonFinalObject[] | undefined;
+   favorites: FavoriteItem[];
+       setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
+}
+export const Pokemon = ({ pokemon, favorites, setFavorites }: PokemonProps) => {
   
            
     return (
@@ -17,7 +20,13 @@ export const Pokemon: React.FC<{ pokemon: PokemonFinalObject[] | undefined }> = 
                 <div className='pokemon_container'>
                 {pokemon.map((pok: PokemonFinalObject, index: number) => {
                     return (
-                        <PokemonCard pok={pok} key={index} />
+                        <PokemonCard
+                        key={index}
+                            pok={pok}
+                            favorites={favorites}
+                            setFavorites={setFavorites}
+                            
+                        />
                     )
                 })}
                 </div>
