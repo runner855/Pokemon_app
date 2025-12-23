@@ -1,9 +1,7 @@
 import React from 'react'
 import { CartItem, FavoriteItem, PokemonDetailsObject } from '../../type/appTypes';
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import { FaShoppingBag } from "react-icons/fa";
 import { PokemonEvolution } from '../PokemonEvolution/PokemonEvolution';
-import { useNavigate } from "react-router";
 import "./SideBarRight.css"
 
 interface SideBarRightProps {
@@ -15,10 +13,7 @@ interface SideBarRightProps {
     favorites: FavoriteItem[];
     setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>,
     mainImage: string;
-    setMainImage: React.Dispatch<React.SetStateAction<string>>
-   
-    
-    
+    setMainImage: React.Dispatch<React.SetStateAction<string>>        
 }
 
 export const SideBarRight = ({
@@ -33,16 +28,6 @@ export const SideBarRight = ({
     setMainImage,
 }: SideBarRightProps) => {
 
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        setShoppingCartValue(shoppingCartValue + 1)
-        
-                  
-
-
-        
-    };
 
     if (!PokemonDetails) return null;
 
@@ -68,12 +53,6 @@ export const SideBarRight = ({
             ];
         });
     };
-
-    const handleAddToCartClick = () => {
-        navigate(`/basket`);
-
-    }
-
 
     const handleCart = () => {
         setCart(prev => {
@@ -103,11 +82,7 @@ export const SideBarRight = ({
                 }
             ];
         });
-    };
-
-    console.log(shoppingCartValue)
-    
-
+    };    
 
     return (
         <>
@@ -117,9 +92,7 @@ export const SideBarRight = ({
                 <div onClick={handleFavoriteClick}>
                     {isFavorite ? <MdFavorite /> : <MdFavoriteBorder />}
                 </div>
-
-                <FaShoppingBag onClick={handleAddToCartClick} />
-                {shoppingCartValue > 0 ? shoppingCartValue : ""}
+        
             </div>
 
             <PokemonEvolution
