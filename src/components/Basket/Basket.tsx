@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CartItem, FavoriteItem } from "../../type/appTypes";
 import "./Basket.css";
 import { BasketCard } from "../BasketCard/BasketCard";
-import {  BasketSummary } from "../BasketSummary/BasketSummary";
+import { BasketSummary } from "../BasketSummary/BasketSummary";
 
 interface ShoppingBasketProps {
   shoppingCartValue: number;
@@ -44,18 +44,18 @@ export const Basket: React.FC<ShoppingBasketProps> = ({
 
     <>
       {cart?.length > 0 &&
-        <div className='cart_main_container'>
-            {cart.map((item: CartItem, index: number) => {
-              return (
-              <div className="basket_card" key={index}>
-                  <BasketCard cart={item}  />
-              </div>
-            )
-            })}
-          <div className="basket_summary">
-            <BasketSummary/>
+        <div className="cart_main_container">
+          <div className="cart_items">
+            {cart.map((item, index) => (
+              <BasketCard key={index} cart={item} />
+            ))}
           </div>
-        </div>}
+
+          <div className="basket_summary">
+            <BasketSummary />
+          </div>
+        </div>
+      }
     </>
 
   );

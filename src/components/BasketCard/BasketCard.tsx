@@ -10,23 +10,27 @@ interface BasketProps {
 
 
 export const BasketCard = ({ cart }: BasketProps) => {
-    console.log(cart)
-    return (
-        <>
-            {cart.quantity && cart.quantity >= 1 &&
-                <div className='basket_card'>
-                    <div className='cart_image_container'>
-                    <img src={cart.image} alt="cart_img" />
-                    </div>
-                    <div className='cart_details'>
-                    <div className='cart_name'>{cart.name}</div>
-                        <div className='color_info'>{`Color: ${cart.color.toUpperCase()}`}</div>
+  if (!cart.quantity || cart.quantity < 1) return null;
 
-                    <div className='quantity'>{`Quantity: ${cart.quantity}`}</div>
-                    </div>
-                </div>}
-        </>
-        
-     );
-}
+  return (
+    <div className="basket_item">
+      <div className="cart_image_container">
+        <img src={cart.image} alt={cart.name} />
+      </div>
+
+      <div className="cart_details">
+        <div className="cart_name">{cart.name}</div>
+        <div className="color_info">Color: {cart.color.toUpperCase()}</div>
+        <div className="quantity">Quantity: {cart.quantity}</div>
+
+        <div className="buttons_quantity">
+          <button className="plus">+</button>
+          <div className="cart_quantity">{cart.quantity}</div>
+          <button className="minus">-</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
  

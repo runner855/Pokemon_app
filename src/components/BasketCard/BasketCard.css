@@ -1,39 +1,59 @@
-.basket_card {
-  border: solid #fff 0.1em;
-  background-color: #fff;
-  padding: 0.5em;
+.basket_item {
+  display: flex;
+  gap: 1.5rem;
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e2e2e5;
 }
 
-.basket_card {
+.cart_image_container img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  background-color: #f2f2f2;
+}
+
+.cart_details {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons_quantity {
+  border: solid 0.1em #e2e2e5;
+  border-radius: 0.5em;
+  width: 10em;
   display: flex;
   flex-direction: row;
 }
 
-.cart_name {
+.plus,
+.minus {
+  padding: 1em;
+  height: 4em;
+  width: 15em;
+  background-color: #e2e2e5;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.plus {
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+}
+
+.minus {
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+.cart_quantity {
   color: #1f1f24;
+  font-size: 20px;
   font-weight: 800;
-  font-size: 1.5em;
-  line-height: 1em;
-  margin-bottom: 0.5em;
-  font-family: "Oswald", "HelveticaNeueBold", "Helvetica Neue",
-    "TeXGyreHerosBold", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-  text-transform: uppercase;
-  margin-left: 0.8em;
-}
-
-.cart_image_container img {
-  height: 20em;
-  width: 20em;
-  background-color: #f2f2f2;
-}
-
-.color_info,
-.quantity {
-  color: black;
-  font-size: 1.2em;
-  line-height: 1em;
-  font-family: "Oswald", "HelveticaNeueBold", "Helvetica Neue",
-    "TeXGyreHerosBold", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-  text-transform: uppercase;
-  margin: 0.8em;
+  line-height: 2.7;
+  height: 46px;
+  width: 46px;
+  padding: 0em 1em 0em 1em;
 }
