@@ -17,14 +17,16 @@
 .cart_details {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-.buttons_quantity {
+.buttons_container {
   border: solid 0.1em #e2e2e5;
   border-radius: 0.5em;
   width: 10em;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .plus,
@@ -56,4 +58,40 @@
   height: 46px;
   width: 46px;
   padding: 0em 1em 0em 1em;
+}
+
+.cart_name {
+  color: #1f1f24;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 19px;
+  margin-bottom: 4px;
+  font-family: "Oswald", "HelveticaNeueBold", "Helvetica Neue",
+    "TeXGyreHerosBold", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  text-transform: uppercase;
+}
+
+.buttons_quantity {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  width: 100%;
+  margin-top: auto;
+}
+
+.trash_fav {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.trash_fav svg {
+  font-size: 2em;
+  color: #000;
+}
+
+.buttons_container {
+  display: flex;
+  align-items: center;
 }

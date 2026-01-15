@@ -1,24 +1,53 @@
 .summary_title {
-  color: rgb(6, 0, 0);
   font-size: 20px;
   line-height: 1.2;
-  margin: 0;
   padding: 16px 0 2px;
+  font-family: "Oswald", "HelveticaNeueBold", "Helvetica Neue",
+    "TeXGyreHerosBold", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .summary_container {
-  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: #fff;
+  margin-bottom: 1rem;
 }
 
 .proceed_purchase_btn button {
-  background-color: red;
-  color: white;
-  font-family: Oswald, sans-serif;
-  font-weight: 500;
-  cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  width: 26em;
+  background: #de0b00;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  min-width: 133px;
+  margin-bottom: 14px;
+  min-height: 40px;
+  border-radius: 1px;
+  font-family: "Oswald", "HelveticaNeueBold", "Helvetica Neue",
+    "TeXGyreHerosBold", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 500;
+  line-height: 1.43;
   text-transform: uppercase;
-  padding: 0.4em;
-  width: 10em;
+}
+
+.border_one,
+.border_two {
+  border-bottom: 1px solid #e2e2e5;
+}
+
+.total,
+.shipping_fees {
+  font-family: "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #1f1f24;
 }
