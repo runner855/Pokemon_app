@@ -8,7 +8,6 @@ interface BasketSummaryProps {
 }
 
 export const BasketSummary = ({ cart }: BasketSummaryProps) => {
-    console.log("cart", cart)
     return (
         <div className='summary_container'>
             <div className='summary_title'>Basket Summary</div>

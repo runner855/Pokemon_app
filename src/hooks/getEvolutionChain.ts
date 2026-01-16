@@ -37,7 +37,11 @@ export async function getEvolutionChain(id: number): Promise<any> {
 
         return {
           name,
-          image: evoData.sprites?.front_default ?? null,
+          image:
+            evoData.sprites?.other?.["official-artwork"]?.front_default ||
+            evoData.sprites?.other?.home?.front_default ||
+            evoData.sprites?.front_default ||
+            null,
         };
       })
     );
