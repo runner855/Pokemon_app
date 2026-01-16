@@ -1,29 +1,24 @@
 .img_one_top {
+  grid-column: 1 / -1;
+  height: 40em;
   width: 100%;
-  margin: 0.1em;
-  height: 60em;
+  object-fit: contain;
+  background-color: #f2f2f2;
 }
 
-.img_two {
-  order: 2;
-  width: 50%;
-  height: 30em;
-}
-
-.img_three {
-  order: 3;
-  width: 50%;
-  height: 30em;
-}
-
-.img_four {
-  order: 4;
-  width: 50%;
-  height: 30em;
-}
-
+.img_two,
+.img_three,
+.img_four,
 .img_five {
-  order: 5;
-  width: 50%;
-  height: 30em;
+  height: 20em;
+  width: 100%;
+  object-fit: contain;
+  background-color: #f2f2f2;
+}
+
+.images_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 0.3rem;
 }
