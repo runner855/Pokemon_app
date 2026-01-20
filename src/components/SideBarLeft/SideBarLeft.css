@@ -22,3 +22,13 @@
   grid-template-rows: auto;
   gap: 0.3rem;
 }
+
+@media (max-width: 768px) {
+  .images_container {
+    grid-template-columns: 1fr;
+  }
+
+  .img_one_top {
+    height: 30em;
+  }
+}

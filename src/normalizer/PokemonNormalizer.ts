@@ -1,26 +1,35 @@
 import axios from "axios";
-import { Pokemon, PokemonResults } from "../type/appTypes";
+import { Pokemon, PokemonResults, PokemonFinalObject } from "../type/appTypes";
 
-export const normalizePokemon = async (PokemongenOne: Pokemon) => {
+export const normalizePokemon = async (
+  PokemongenOne: Pokemon
+): Promise<PokemonFinalObject[]> => {
   try {
     const normalizedData = await Promise.all(
       PokemongenOne.results.map(async (item: PokemonResults) => {
         try {
           const res = await axios.get(item.url);
-          const PokemonId = res.data.id;
-          const title = res.data.name;
-          const mainImage = res.data.sprites.other.dream_world.front_default;
+
+          const mainImage =
+            res.data.sprites.other["official-artwork"].front_default ||
+            res.data.sprites.front_default ||
+            "";
 
           return {
-            id: PokemonId,
-            name: title || "Untitled",
-            mainImage: mainImage || "Image Not Found!",
+            id: res.data.id,
+            name: res.data.name ?? "Untitled",
+            mainImage,
           };
-        } catch (error) {}
+        } catch (error) {
+          console.error("Error fetching Pokémon:", item.name, error);
+          return null;
+        }
       })
     );
 
-    return normalizedData;
+    return normalizedData.filter(
+      (pokemon): pokemon is PokemonFinalObject => pokemon !== null
+    );
   } catch (error) {
     console.error("Error normalizing Pokémon data:", error);
     return [];

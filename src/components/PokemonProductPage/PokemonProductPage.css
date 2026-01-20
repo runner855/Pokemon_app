@@ -15,3 +15,13 @@
 .sidebar_right {
   width: 30%;
 }
+
+@media (max-width: 768px) {
+  .principal_container {
+    display: block;
+  }
+
+  .img_one {
+    height: 30em;
+  }
+}

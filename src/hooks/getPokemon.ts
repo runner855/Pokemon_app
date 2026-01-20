@@ -7,7 +7,7 @@ export const getPokemon = async () => {
 
     const PokemongenOne = res.data;
 
-    const simplifiedPokemonData = normalizePokemon(PokemongenOne);
+    const simplifiedPokemonData = await normalizePokemon(PokemongenOne);
 
     return simplifiedPokemonData;
   } catch (error) {
