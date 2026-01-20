@@ -22,21 +22,41 @@
 }
 
 .order_by_container {
+  position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: right;
-  font-weight: 800;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5em;
   margin-right: 3em;
 }
 
-.az {
-  text-transform: uppercase;
-  font-weight: 800;
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5em;
+
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  min-width: 160px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  z-index: 100;
 }
 
-.open_filter {
-  line-height: 1.4;
-  margin-left: 0.8em;
+.dropdown_item {
+  padding: 0.6em 1em;
+  cursor: pointer;
+}
+
+.dropdown_item:hover {
+  background: #f3f3f3;
+}
+
+.load_more {
+  margin: 2em;
+  text-align: center;
 }
 
 @media (min-width: 600px) {
