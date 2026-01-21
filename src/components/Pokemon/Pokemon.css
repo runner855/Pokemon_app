@@ -54,9 +54,32 @@
   background: #f3f3f3;
 }
 
-.load_more {
-  margin: 2em;
+.load_more_container {
   text-align: center;
+  margin: 0.3em;
+}
+
+.load_more {
+  display: inline-flex;
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+  min-height: 40px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 1.6;
+  padding: 9px 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: black;
+  color: white;
 }
 
 @media (min-width: 600px) {

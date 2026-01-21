@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getPokemon } from '../../hooks/getPokemon';
+import React, { useState } from 'react';
 import { PokemonCard } from '../PokemonCard/PokemonCard';
-import { FavoriteItem, PokemonDetailsObject, PokemonFinalObject } from '../../type/appTypes';
+import { FavoriteItem, PokemonFinalObject } from '../../type/appTypes';
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import "./Pokemon.css";
 
@@ -10,8 +9,11 @@ interface PokemonProps {
     pokemon: PokemonFinalObject[] | undefined;
     favorites: FavoriteItem[];
     setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
+    pageNumber: number;
+    setPageNumber: React.Dispatch<React.SetStateAction<number>>
+
 }
-export const Pokemon = ({ pokemon, favorites, setFavorites }: PokemonProps) => {
+export const Pokemon = ({ pokemon, favorites, setFavorites, pageNumber, setPageNumber }: PokemonProps) => {
 
     const [filterOpen, setFilterOpen] = useState(false);
     const [filteredPokemon, setFilteredPokemon] = useState<PokemonFinalObject[] | undefined>();
@@ -27,7 +29,7 @@ export const Pokemon = ({ pokemon, favorites, setFavorites }: PokemonProps) => {
             setFilteredPokemon(sortedPokemonAZ);
             console.log("here1", filteredPokemon)
 
-            
+
         }
     }
 
@@ -40,11 +42,9 @@ export const Pokemon = ({ pokemon, favorites, setFavorites }: PokemonProps) => {
         }
     }
 
-    // const alphabeticDown: boolean = true;
-
-
-
-
+    const handleLoadMore = () => {
+        setPageNumber((prev) => prev + 1);
+    };
 
     return (
         <>
@@ -72,7 +72,7 @@ export const Pokemon = ({ pokemon, favorites, setFavorites }: PokemonProps) => {
                         filteredPokemon.map((pok: PokemonFinalObject, index: number) => {
                             return (
                                 <PokemonCard
-                                    key={index}
+                                    key={pok.id}
                                     pok={pok}
                                     favorites={favorites}
                                     setFavorites={setFavorites}
@@ -83,7 +83,7 @@ export const Pokemon = ({ pokemon, favorites, setFavorites }: PokemonProps) => {
                         pokemon.map((pok: PokemonFinalObject, index: number) => {
                             return (
                                 <PokemonCard
-                                    key={index}
+                                    key={pok.id}
                                     pok={pok}
                                     favorites={favorites}
                                     setFavorites={setFavorites}
@@ -94,8 +94,9 @@ export const Pokemon = ({ pokemon, favorites, setFavorites }: PokemonProps) => {
                     }
                 </div>
             }
-            <div>
-                                    <button className='load_more'>Load More Pokemon</button>
+            <div className='load_more_container'>
+                <p>You have viewed {pokemon?.length} Pokemon of 1350</p>
+                <button className='load_more' onClick={handleLoadMore}>Load More Pokemon</button>
 
             </div>
         </>

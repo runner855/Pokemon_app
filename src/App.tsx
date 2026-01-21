@@ -13,6 +13,7 @@ import { Search } from './components/Search/Search';
 
 
 export const App = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject | null }) => {
+  const [pageNumber, setPageNumber] = useState<number>(1);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [pokemon, setPokemon] = useState<PokemonFinalObject[]>();
@@ -20,18 +21,24 @@ export const App = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject |
   const [mainImage, setMainImage] = useState('');
   
 
-     useEffect(() => {
-    const fetchPokemon = async () => {
-      try {
-          const pokemonData = await getPokemon(); 
-          setPokemon(pokemonData as PokemonFinalObject[] | undefined);
-      } catch (error) {
-        console.error("Error fetching Pokemon:", error);
-      }
-    };
+   useEffect(() => {
+  const fetchPokemon = async () => {
+    try {
+      const pokemonData = await getPokemon(pageNumber);
 
-    fetchPokemon();
-     }, []);
+      setPokemon((prev) =>
+        pageNumber === 1
+          ? pokemonData
+          : [...(prev ?? []), ...pokemonData]
+      );
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  fetchPokemon();
+}, [pageNumber]);
+
   
 
   return (
@@ -45,6 +52,8 @@ export const App = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject |
           pokemon={pokemon}
           favorites={favorites}
           setFavorites={setFavorites}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
         />} />
 
         <Route path="/pokemon/:id" element={<PokemonProductPage

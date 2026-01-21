@@ -1,14 +1,16 @@
 import pokemonApiCall from "../api/pokemonApiCall";
 import { normalizePokemon } from "../normalizer/PokemonNormalizer";
 
-export const getPokemon = async () => {
+export const getPokemon = async (pageNumber: number) => {
   try {
-    const res = await pokemonApiCall.get(`pokemon?limit=25`);
+    const limit = 25;
+    const offset = (pageNumber - 1) * limit;
 
-    const PokemongenOne = res.data;
+    const res = await pokemonApiCall.get(
+      `pokemon?limit=${limit}&offset=${offset}`
+    );
 
-    const simplifiedPokemonData = await normalizePokemon(PokemongenOne);
-
+    const simplifiedPokemonData = await normalizePokemon(res.data);
     return simplifiedPokemonData;
   } catch (error) {
     console.error("Error fetching Pokémon:", error);
