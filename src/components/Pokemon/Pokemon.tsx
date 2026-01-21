@@ -46,6 +46,11 @@ export const Pokemon = ({ pokemon, favorites, setFavorites, pageNumber, setPageN
         setPageNumber((prev) => prev + 1);
     };
 
+    const handleFavoritesFilter = () => {
+   
+     
+    }
+
     return (
         <>
             <div className='pokemon_title'>Pokemon</div>
@@ -61,7 +66,7 @@ export const Pokemon = ({ pokemon, favorites, setFavorites, pageNumber, setPageN
                     <div className="dropdown">
                         <div className="dropdown_item" onClick={handleFilterAZ}>A–Z</div>
                         <div className="dropdown_item" onClick={handleFilterZA}>Z–A</div>
-                        <div className="dropdown_item">Favorites</div>
+                        <div className="dropdown_item" onClick={handleFavoritesFilter}>Favorites</div>
                     </div>
                 )}
             </div>
