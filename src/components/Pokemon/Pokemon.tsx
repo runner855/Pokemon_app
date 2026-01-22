@@ -13,43 +13,56 @@ interface PokemonProps {
     setPageNumber: React.Dispatch<React.SetStateAction<number>>
 
 }
-export const Pokemon = ({ pokemon, favorites, setFavorites, pageNumber, setPageNumber }: PokemonProps) => {
 
+type FilterType = "NONE" | "AZ" | "ZA" | "FAVORITES";
+export const Pokemon = ({ pokemon, favorites, setFavorites, pageNumber, setPageNumber }: PokemonProps) => {
+    
+    
+    
     const [filterOpen, setFilterOpen] = useState(false);
-    const [filteredPokemon, setFilteredPokemon] = useState<PokemonFinalObject[] | undefined>();
+    const [activeFilter, setActiveFilter] = useState<FilterType>("NONE");
+    // const displayedPokemon = filteredPokemon ?? pokemon ?? [];
+
+    const displayedPokemon = React.useMemo(() => {
+  if (!pokemon) return [];
+
+  switch (activeFilter) {
+    case "AZ":
+      return [...pokemon].sort((a, b) => a.name.localeCompare(b.name));
+
+    case "ZA":
+      return [...pokemon].sort((a, b) => b.name.localeCompare(a.name));
+
+    case "FAVORITES":
+      const favoriteIds = new Set(
+        favorites.filter(f => f.favorite).map(f => f.id)
+      );
+      return pokemon.filter(p => favoriteIds.has(p.id));
+
+    default:
+      return pokemon;
+  }
+}, [pokemon, favorites, activeFilter]);
+
 
     const handleFilter = () => {
         setFilterOpen(!filterOpen)
     }
 
-    const handleFilterAZ = () => {
-        if (Array.isArray(pokemon)) {
-            // setFilteredPokemon(undefined)
-            const sortedPokemonAZ = [...pokemon].sort((a, b) => a.name.localeCompare(b.name));
-            setFilteredPokemon(sortedPokemonAZ);
-            console.log("here1", filteredPokemon)
+    const handleFilterAZ = () => setActiveFilter('AZ');
+    const handleFilterZA = () => setActiveFilter('ZA');
+    const handleFavoritesFilter = () => setActiveFilter("FAVORITES");
+
+  
 
 
-        }
-    }
-
-    const handleFilterZA = () => {
-        if (Array.isArray(pokemon)) {
-            // setFilteredPokemon(undefined)
-            const sortedPokemonZA = [...pokemon].sort((a, b) => b.name.localeCompare(a.name));
-            setFilteredPokemon(sortedPokemonZA);
-            console.log("here", filteredPokemon)
-        }
-    }
 
     const handleLoadMore = () => {
         setPageNumber((prev) => prev + 1);
     };
 
-    const handleFavoritesFilter = () => {
-   
-     
-    }
+
+
 
     return (
         <>
@@ -71,36 +84,19 @@ export const Pokemon = ({ pokemon, favorites, setFavorites, pageNumber, setPageN
                 )}
             </div>
 
-            {pokemon &&
-                <div className='pokemon_container'>
-                    {filteredPokemon ?
-                        filteredPokemon.map((pok: PokemonFinalObject, index: number) => {
-                            return (
-                                <PokemonCard
-                                    key={pok.id}
-                                    pok={pok}
-                                    favorites={favorites}
-                                    setFavorites={setFavorites}
+            <div className="pokemon_container">
+                {displayedPokemon.map((pok) => (
+                    <PokemonCard
+                        key={pok.id}
+                        pok={pok}
+                        favorites={favorites}
+                        setFavorites={setFavorites}
+                    />
+                ))}
+            </div>
 
-                                />
-                            )
-                        }) :
-                        pokemon.map((pok: PokemonFinalObject, index: number) => {
-                            return (
-                                <PokemonCard
-                                    key={pok.id}
-                                    pok={pok}
-                                    favorites={favorites}
-                                    setFavorites={setFavorites}
-
-                                />
-                            )
-                        })
-                    }
-                </div>
-            }
             <div className='load_more_container'>
-                <p>You have viewed {pokemon?.length} Pokemon of 1350</p>
+                <p>You have viewed {displayedPokemon.length} Pokemon of 1350</p>
                 <button className='load_more' onClick={handleLoadMore}>Load More Pokemon</button>
 
             </div>
