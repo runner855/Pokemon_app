@@ -6,15 +6,12 @@ import "./PokemonFavorites.css";
 interface PokemonFavoritesProps {
     favorites: FavoriteItem[];
     setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
-
 }
 
 export const PokemonFavorites = ({
     favorites,
     setFavorites
 }: PokemonFavoritesProps) => {
-
-    console.log(favorites)
 
     return (
         <>
@@ -31,9 +28,7 @@ export const PokemonFavorites = ({
                                 />
                             )
                         })}
-                    </div>}
-               
-           
+                    </div>}      
         </>
     );
 }

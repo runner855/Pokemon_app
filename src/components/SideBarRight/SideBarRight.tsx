@@ -47,8 +47,7 @@ export const SideBarRight = ({
                     id: PokemonDetails.id,
                     name: PokemonDetails.name,
                     image: PokemonDetails.images.One,
-                    favorite: true,
-                    
+                    favorite: true,   
                 }
             ];
         });
@@ -74,11 +73,7 @@ export const SideBarRight = ({
                     image: PokemonDetails.images.One,
                     color:PokemonDetails.color,
                     isIntheCart: true,
-                    quantity: 1,
-                  
-
-
-                    
+                    quantity: 1,                    
                 }
             ];
         });

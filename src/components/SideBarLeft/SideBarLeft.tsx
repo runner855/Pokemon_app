@@ -1,8 +1,6 @@
 import React from 'react';
 import { PokemonDetailsObject } from '../../type/appTypes';
 import "./SideBarLeft.css";
-import { Pokemon } from '../Pokemon/Pokemon';
-import { PokemonDetails } from '../PokemonDetails/PokemonDetails';
 
 interface SideBarLeftProps {
     PokemonDetails: PokemonDetailsObject | null;

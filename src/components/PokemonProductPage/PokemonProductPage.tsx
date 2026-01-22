@@ -5,7 +5,6 @@ import { SideBarLeft } from '../SideBarLeft/SideBarLeft';
 import { SideBarRight } from '../SideBarRight/SideBarRight';
 import { useParams } from "react-router-dom";
 import { getPokemonDetails } from '../../hooks/getPokemonDetails';
-import { PokemonDetails } from '../PokemonDetails/PokemonDetails';
 
 interface IPokemonProductPage {
     cart: CartItem[];
@@ -16,10 +15,6 @@ interface IPokemonProductPage {
     setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>
     mainImage: string;
     setMainImage: React.Dispatch<React.SetStateAction<string>>
-    
-
-
-
 }
 
 

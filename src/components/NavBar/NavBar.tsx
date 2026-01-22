@@ -21,7 +21,7 @@ export const NavBar = ({ shoppingCartValue, cart }: NavBarProps) => {
         navigate(`/basket`);
     }
 
-      const handleNavigateToSearch = () => {
+    const handleNavigateToSearch = () => {
         navigate(`/search`);
     }
 
@@ -49,9 +49,9 @@ export const NavBar = ({ shoppingCartValue, cart }: NavBarProps) => {
                     </div>
                 </div>
             </nav>
-                <nav className='nav2'>
-                    {BOTTOM_NAVBAR_RED_LABEL}
-                </nav>
+            <nav className='nav2'>
+                {BOTTOM_NAVBAR_RED_LABEL}
+            </nav>
         </header>
     );
 }

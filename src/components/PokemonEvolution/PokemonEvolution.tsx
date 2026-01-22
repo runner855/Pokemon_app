@@ -7,11 +7,7 @@ import { PokemonDetailsObject } from '../../type/appTypes';
 interface PokemonEvolutionProps {
     mainImage: string;
     setMainImage: React.Dispatch<React.SetStateAction<string>>
-    PokemonDetails: PokemonDetailsObject | null;
-    
-    
-    
-    
+    PokemonDetails: PokemonDetailsObject | null;   
 }
 
 export const PokemonEvolution = ({mainImage, setMainImage, PokemonDetails}:PokemonEvolutionProps) => {

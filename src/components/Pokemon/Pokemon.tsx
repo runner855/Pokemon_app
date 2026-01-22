@@ -16,33 +16,32 @@ interface PokemonProps {
 
 type FilterType = "NONE" | "AZ" | "ZA" | "FAVORITES";
 export const Pokemon = ({ pokemon, favorites, setFavorites, pageNumber, setPageNumber }: PokemonProps) => {
-    
-    
-    
+
+
+
     const [filterOpen, setFilterOpen] = useState(false);
     const [activeFilter, setActiveFilter] = useState<FilterType>("NONE");
-    // const displayedPokemon = filteredPokemon ?? pokemon ?? [];
 
     const displayedPokemon = React.useMemo(() => {
-  if (!pokemon) return [];
+        if (!pokemon) return [];
 
-  switch (activeFilter) {
-    case "AZ":
-      return [...pokemon].sort((a, b) => a.name.localeCompare(b.name));
+        switch (activeFilter) {
+            case "AZ":
+                return [...pokemon].sort((a, b) => a.name.localeCompare(b.name));
 
-    case "ZA":
-      return [...pokemon].sort((a, b) => b.name.localeCompare(a.name));
+            case "ZA":
+                return [...pokemon].sort((a, b) => b.name.localeCompare(a.name));
 
-    case "FAVORITES":
-      const favoriteIds = new Set(
-        favorites.filter(f => f.favorite).map(f => f.id)
-      );
-      return pokemon.filter(p => favoriteIds.has(p.id));
+            case "FAVORITES":
+                const favoriteIds = new Set(
+                    favorites.filter(f => f.favorite).map(f => f.id)
+                );
+                return pokemon.filter(p => favoriteIds.has(p.id));
 
-    default:
-      return pokemon;
-  }
-}, [pokemon, favorites, activeFilter]);
+            default:
+                return pokemon;
+        }
+    }, [pokemon, favorites, activeFilter]);
 
 
     const handleFilter = () => {
@@ -53,16 +52,9 @@ export const Pokemon = ({ pokemon, favorites, setFavorites, pageNumber, setPageN
     const handleFilterZA = () => setActiveFilter('ZA');
     const handleFavoritesFilter = () => setActiveFilter("FAVORITES");
 
-  
-
-
-
     const handleLoadMore = () => {
         setPageNumber((prev) => prev + 1);
     };
-
-
-
 
     return (
         <>
