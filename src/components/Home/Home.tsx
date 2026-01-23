@@ -9,6 +9,7 @@ export const Home = () => {
             <div>
 
                 <img
+                    className='welcome_img'
                     src={HomeImg}
                     alt="welcome_img"
                     loading='lazy' />
