@@ -14,3 +14,22 @@
 .basket_summary {
   flex: 0 0 30%;
 }
+
+.cart_items {
+  width: 70%;
+}
+
+.basket_summary {
+  width: 30%;
+}
+
+@media (max-width: 768px) {
+  .cart_main_container {
+    display: block;
+  }
+
+  .cart_items,
+  .basket_summary {
+    width: 100%;
+  }
+}

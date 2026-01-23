@@ -11,9 +11,16 @@
 }
 
 .pokemon_img {
-  height: 30em;
-  width: 30em;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: 1em;
+  display: block;
+}
+
+.image_container {
+  width: 100%;
+  overflow: hidden;
 }
 
 .image_not_available {
@@ -26,9 +33,15 @@
   font-weight: 800;
 }
 
+.pokemon_card_fav_icon {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  cursor: pointer;
+}
+
 .pokemon_card_fav_icon svg {
   font-size: 1.8em;
-  margin: 0.3em 0.3em 0.3em 15em;
 }
 
 .pokemon_card_fav_icon_clicked {

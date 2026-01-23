@@ -51,3 +51,15 @@
   line-height: 22px;
   color: #1f1f24;
 }
+
+@media (max-width: 768px) {
+  .summary_container {
+    text-align: center;
+  }
+
+  .total,
+  .shipping_fees {
+    text-align: left;
+    margin-left: 0.3em;
+  }
+}

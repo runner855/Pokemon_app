@@ -7,6 +7,18 @@
   margin: auto;
 }
 
+/* .favorites_container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-color: rgb(247, 245, 243);
+  height: auto;
+  width: 100%;
+  display: block;
+  position: relative;
+} */
+
 .pokemon_favorite_title,
 .no_favorites_message {
   font-family: "Oswald", sans-serif;
@@ -20,6 +32,7 @@
   margin-top: 0;
   margin-bottom: 8px;
   margin-left: 0.4em;
+  width: 100%;
 }
 
 .no_favorites_message {

@@ -16,6 +16,7 @@
   justify-content: center;
   padding: 0 16px;
   margin: auto;
+  margin-bottom: 2em;
   width: 80%;
   outline: none;
   font-weight: 800;
@@ -26,21 +27,27 @@
 
 .results_card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
   font-family: arial;
   background-color: rgb(247, 245, 243);
   height: auto;
-  width: 20%;
+  width: 100%;
   display: block;
   position: relative;
-  margin: 1em auto;
 }
 
 .results_pokemon_img {
-  height: 20em;
-  width: 20em;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: 1em;
+  display: block;
+}
+
+.image_container {
+  width: 100%;
+  overflow: hidden;
 }
 
 .image_not_available {
@@ -53,9 +60,15 @@
   font-weight: 800;
 }
 
+.pokemon_card_fav_icon {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  cursor: pointer;
+}
+
 .pokemon_card_fav_icon svg {
   font-size: 1.8em;
-  margin: 0.3em 0.3em 0.3em 15em;
 }
 
 .pokemon_card_fav_icon_clicked {

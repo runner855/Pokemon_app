@@ -68,3 +68,22 @@
 .favoriteIcon_clicked {
   color: red;
 }
+
+@media (max-width: 768px) {
+  .description p {
+    width: 170%;
+  }
+
+  .description,
+  .height,
+  .weight,
+  .happiness,
+  .experience,
+  .capture_rate,
+  .growth,
+  .habitat,
+  .types,
+  .color {
+    width: 170%;
+  }
+}

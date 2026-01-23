@@ -44,7 +44,12 @@ export const App = ({ PokemonDetails }: { PokemonDetails: PokemonDetailsObject |
   return (
 
     <div className="App">
-      <NavBar shoppingCartValue={shoppingCartValue} cart={cart} />
+      <NavBar
+        shoppingCartValue={shoppingCartValue}
+        cart={cart}
+        favorites={favorites}
+        setFavorites={setFavorites}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />

@@ -24,4 +24,8 @@
   .img_one {
     height: 30em;
   }
+
+  .container_left {
+    width: 100%;
+  }
 }

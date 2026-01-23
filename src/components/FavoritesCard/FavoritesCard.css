@@ -6,7 +6,7 @@
   background-color: rgb(247, 245, 243);
   height: auto;
   width: 100%;
-  display: grid;
+  display: block;
   position: relative;
 }
 
@@ -16,12 +16,15 @@
   padding-left: 64px;
   padding-right: 64px;
   display: grid;
+  width: 100%;
 }
 
 .favorite_pokemon_img {
-  height: 30em;
-  width: 30em;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: 1em;
+  display: block;
 }
 
 .image_not_available {
@@ -34,9 +37,15 @@
   font-weight: 800;
 }
 
+.favorite_icon {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  cursor: pointer;
+}
+
 .favorite_icon svg {
   font-size: 1.8em;
-  margin: 0.3em 0.3em 0.3em 15em;
 }
 
 .fav_icon_clicked {

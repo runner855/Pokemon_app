@@ -2,7 +2,7 @@ import React from 'react';
 import { NavBarStructure } from '../../utilities/utility';
 import { NavLink } from 'react-router-dom';
 import { FiSearch, FiShoppingBag } from 'react-icons/fi';
-import { CartItem } from '../../type/appTypes';
+import { CartItem, FavoriteItem } from '../../type/appTypes';
 import { useNavigate } from "react-router";
 import "./NavBar.css";
 import { BOTTOM_NAVBAR_RED_LABEL } from '../../constants/dictionary';
@@ -10,10 +10,12 @@ import { BOTTOM_NAVBAR_RED_LABEL } from '../../constants/dictionary';
 interface NavBarProps {
     cart: CartItem[];
     shoppingCartValue: number;
+     favorites: FavoriteItem[];
+    setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
 
 }
 
-export const NavBar = ({ shoppingCartValue, cart }: NavBarProps) => {
+export const NavBar = ({ shoppingCartValue, cart, favorites, setFavorites }: NavBarProps) => {
 
     const navigate = useNavigate();
 
