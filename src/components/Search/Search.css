@@ -27,7 +27,7 @@
 
 .results_card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 0 auto;
+  margin: auto;
   text-align: center;
   font-family: arial;
   background-color: rgb(247, 245, 243);
@@ -35,14 +35,13 @@
   width: 100%;
   display: block;
   position: relative;
+  width: 280px;
+  max-width: 90%;
 }
 
 .results_pokemon_img {
   width: 100%;
-  max-width: 100%;
   height: auto;
-  border-radius: 1em;
-  display: block;
 }
 
 .image_container {

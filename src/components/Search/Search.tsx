@@ -43,7 +43,7 @@ export const Search = () => {
       } finally {
         setLoading(false);
       }
-    }, 400); 
+    }, 400);
 
     return () => clearTimeout(timeout);
   }, [pokQuery]);
@@ -66,8 +66,8 @@ export const Search = () => {
           className="results_card"
           onClick={() => navigate(`/pokemon/${pokCard.id}`)}
         >
-                  <div className="image_container">
-                        {/* <div className='image_container'>
+          <div className="image_container">
+            {/* <div className='image_container'>
                                        <div className='pokemon_card_fav_icon' onClick={handleFavIconClick}>{isFavorite ?<MdFavorite className='pokemon_card_fav_icon_clicked'/>:<MdFavoriteBorder/>}</div> */}
             <img
               className="results_pokemon_img"
