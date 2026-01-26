@@ -21,6 +21,15 @@
   margin-right: 3em;
 }
 
+.order_by {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  color: #1f1f24;
+  font-size: 14px;
+  line-height: 160%;
+  margin-right: 8px;
+}
+
 .dropdown {
   position: absolute;
   top: 100%;
@@ -80,6 +89,15 @@
   grid-template-columns: 1fr; /* mobile */
   gap: 1em;
   margin: 0 auto;
+}
+
+.all_filters {
+  border: solid 0.1em black;
+  width: 6em;
+  padding: 0.7em;
+  line-height: 0.2;
+  margin-right: 95em;
+  text-transform: uppercase;
 }
 
 @media (min-width: 600px) {

@@ -3,42 +3,11 @@ import { CartItem, FavoriteItem } from "../../type/appTypes";
 import "./Basket.css";
 import { BasketCard } from "../BasketCard/BasketCard";
 import { BasketSummary } from "../BasketSummary/BasketSummary";
+import { useAppContext } from "../../context/AppContext";
 
-interface ShoppingBasketProps {
-  shoppingCartValue: number;
-  setShoppingCartValue: (value: number) => void;
-  favorites: FavoriteItem[];
-  setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
-  cart: CartItem[];
-  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+export const Basket = () => {
 
-
-}
-export const Basket: React.FC<ShoppingBasketProps> = ({
-  shoppingCartValue,
-  setShoppingCartValue,
-  cart, setCart
-}) => {
-  const [exit, setExit] = useState(false);
-  const [deleteItem, setDeleteItem] = useState(false);
-
-  const handleExitClick = () => {
-    setExit(!exit);
-  };
-
-  const handleIncreaseQuantity = () => {
-    setShoppingCartValue(shoppingCartValue + 1);
-  };
-
-  const handleDecreasedQuantity = () => {
-    setShoppingCartValue(shoppingCartValue - 1);
-  };
-
-  const handleRemoveItem = () => {
-    setDeleteItem(!deleteItem);
-    setShoppingCartValue(0);
-  };
-
+  const {shoppingCartValue, setShoppingCartValue, cart, setCart } = useAppContext();
 
   return (
 

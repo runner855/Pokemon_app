@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
 import { PokemonCard } from '../PokemonCard/PokemonCard';
-import { FavoriteItem, PokemonFinalObject } from '../../type/appTypes';
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+import { BsSliders } from "react-icons/bs";
+import { useAppContext } from "../../context/AppContext";
 import "./Pokemon.css";
 
-
-interface PokemonProps {
-    pokemon: PokemonFinalObject[] | undefined;
-    favorites: FavoriteItem[];
-    setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
-    pageNumber: number;
-    setPageNumber: React.Dispatch<React.SetStateAction<number>>
-
-}
-
 type FilterType = "NONE" | "AZ" | "ZA" | "FAVORITES";
-export const Pokemon = ({ pokemon, favorites, setFavorites, pageNumber, setPageNumber }: PokemonProps) => {
+export const Pokemon = () => {
+
+    const { pokemon, favorites, setFavorites, pageNumber, setPageNumber } = useAppContext();
 
 
 
@@ -60,6 +53,11 @@ export const Pokemon = ({ pokemon, favorites, setFavorites, pageNumber, setPageN
         <>
             <div className='pokemon_title'>Pokemon</div>
             <div className="order_by_container">
+            <div className='all_filters'>
+                <BsSliders/>
+                All Filters
+            </div>
+                {displayedPokemon.length} results
                 <div className="order_by">Order by:</div>
                 <span className="az">A-Z</span>
 

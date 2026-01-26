@@ -5,30 +5,12 @@ import { SideBarLeft } from '../SideBarLeft/SideBarLeft';
 import { SideBarRight } from '../SideBarRight/SideBarRight';
 import { useParams } from "react-router-dom";
 import { getPokemonDetails } from '../../hooks/getPokemonDetails';
-
-interface IPokemonProductPage {
-    cart: CartItem[];
-    setCart: React.Dispatch<React.SetStateAction<CartItem[]>>,
-    shoppingCartValue: number,
-    setShoppingCartValue: React.Dispatch<React.SetStateAction<number>>,
-    favorites: FavoriteItem[];
-    setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>
-    mainImage: string;
-    setMainImage: React.Dispatch<React.SetStateAction<string>>
-}
+import { useAppContext } from '../../context/AppContext';
 
 
-export const PokemonProductPage: React.FC<IPokemonProductPage> = ({
-    cart,
-    setCart,
-    shoppingCartValue,
-    setShoppingCartValue,
-    favorites,
-    setFavorites,
-    mainImage,
-    setMainImage,
-   
-}) => {
+export const PokemonProductPage = () => {
+
+    const { cart, setCart, shoppingCartValue, setShoppingCartValue, favorites, setFavorites, mainImage, setMainImage} = useAppContext();
 
     const params = useParams();
 
