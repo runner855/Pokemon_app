@@ -11,10 +11,6 @@ import { Search } from './components/Search/Search';
 import './App.css';
 
 export const App = () => {
-  // const [pageNumber, setPageNumber] = useState<number>(1);
-  // const [pokemon, setPokemon] = useState<PokemonFinalObject[]>();
-
-
 
   return (
     <div className="App">
@@ -22,22 +18,12 @@ export const App = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-
-     
-        <Route path="/pokemon" element={<Pokemon/>} />
-
-     
+        <Route path="/home" element={<Home />} />  
+        <Route path="/pokemon" element={<Pokemon/>} />    
         <Route path="/pokemon/:id" element={<PokemonProductPage />} />
-        <Route path="/:page/:id" element={<PokemonProductPage />} />
-
-    
-        <Route path="/basket" element={<Basket />} />
-
-       
-        <Route path="/favorites" element={<PokemonFavorites />} />
-
-    
+        <Route path="/:page/:id" element={<PokemonProductPage />} />   
+        <Route path="/basket" element={<Basket />} />      
+        <Route path="/favorites" element={<PokemonFavorites />} />   
         <Route path="/search" element={<Search />} />
       </Routes>
     </div>

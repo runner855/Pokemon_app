@@ -27,7 +27,8 @@ export const PokemonCard = ({ pok, favorites, setFavorites }:PokemonCardProps) =
                 id: pok.id,
                 name: pok.name,
                 image: pok.mainImage,
-                favorite: true
+                favorite: true,
+                price:pok.price
             }]
     );
   };

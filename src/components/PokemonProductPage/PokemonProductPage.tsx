@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./PokemonProductPage.css";
-import { CartItem, FavoriteItem, PokemonDetailsObject } from '../../type/appTypes';
+import {  PokemonDetailsObject } from '../../type/appTypes';
 import { SideBarLeft } from '../SideBarLeft/SideBarLeft';
 import { SideBarRight } from '../SideBarRight/SideBarRight';
 import { useParams } from "react-router-dom";
@@ -10,7 +10,7 @@ import { useAppContext } from '../../context/AppContext';
 
 export const PokemonProductPage = () => {
 
-    const { cart, setCart, shoppingCartValue, setShoppingCartValue, favorites, setFavorites, mainImage, setMainImage} = useAppContext();
+    const { cart, setCart, shoppingCartValue, setShoppingCartValue, favorites, setFavorites, mainImage, setMainImage, pokemon} = useAppContext();
 
     const params = useParams();
 
@@ -55,6 +55,7 @@ export const PokemonProductPage = () => {
                     setFavorites={setFavorites}
                     mainImage={mainImage}
                     setMainImage={setMainImage}
+                    pokemon={pokemon}
                 />
             </div>
         </div>

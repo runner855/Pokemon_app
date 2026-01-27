@@ -35,6 +35,7 @@ export const Search = () => {
             res.data.sprites.other["official-artwork"].front_default ||
             res.data.sprites.front_default ||
             "",
+          price:res.data.price,
         };
 
         setPokCard(normalizedPokemon);

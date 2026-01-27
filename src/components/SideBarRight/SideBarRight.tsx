@@ -1,5 +1,5 @@
 import React from 'react'
-import { CartItem, FavoriteItem, PokemonDetailsObject } from '../../type/appTypes';
+import { CartItem, FavoriteItem, PokemonDetailsObject, PokemonFinalObject } from '../../type/appTypes';
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { PokemonEvolution } from '../PokemonEvolution/PokemonEvolution';
 import "./SideBarRight.css"
@@ -13,7 +13,8 @@ interface SideBarRightProps {
     favorites: FavoriteItem[];
     setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>,
     mainImage: string;
-    setMainImage: React.Dispatch<React.SetStateAction<string>>        
+    setMainImage: React.Dispatch<React.SetStateAction<string>>,
+    pokemon: PokemonFinalObject[] | undefined;
 }
 
 export const SideBarRight = ({
@@ -26,6 +27,7 @@ export const SideBarRight = ({
     setFavorites,
     mainImage,
     setMainImage,
+    pokemon
 }: SideBarRightProps) => {
 
 
@@ -47,7 +49,8 @@ export const SideBarRight = ({
                     id: PokemonDetails.id,
                     name: PokemonDetails.name,
                     image: PokemonDetails.images.One,
-                    favorite: true,   
+                    favorite: true,
+                    
                 }
             ];
         });
@@ -73,11 +76,14 @@ export const SideBarRight = ({
                     image: PokemonDetails.images.One,
                     color:PokemonDetails.color,
                     isIntheCart: true,
+                    price:PokemonDetails.price,
                     quantity: 1,                    
                 }
             ];
         });
-    };    
+    };  
+    
+    console.log(PokemonDetails)
 
     return (
         <>
@@ -96,7 +102,7 @@ export const SideBarRight = ({
                 PokemonDetails={PokemonDetails}
 
             />
-
+            <div className='price'>Price:${PokemonDetails.price} </div>
             <div className='height'>Height: {PokemonDetails.height}</div>
             <div className='weight'>Weight: {PokemonDetails.weight}</div>
             <div className='happiness'>Happiness: {PokemonDetails.happiness}</div>

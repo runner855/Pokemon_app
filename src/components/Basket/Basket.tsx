@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { CartItem, FavoriteItem } from "../../type/appTypes";
+import React from "react";
 import "./Basket.css";
 import { BasketCard } from "../BasketCard/BasketCard";
 import { BasketSummary } from "../BasketSummary/BasketSummary";
@@ -7,7 +6,7 @@ import { useAppContext } from "../../context/AppContext";
 
 export const Basket = () => {
 
-  const {shoppingCartValue, setShoppingCartValue, cart, setCart } = useAppContext();
+  const {shoppingCartValue, setShoppingCartValue, cart, setCart, pokemon, pokemonDetails } = useAppContext();
 
   return (
 
@@ -22,6 +21,8 @@ export const Basket = () => {
                 setCart={setCart}
                 setShoppingCartValue={setShoppingCartValue}
                 shoppingCartValue={shoppingCartValue}
+                pokemon={pokemon}
+                pokemonDetails={pokemonDetails}
               />
             ))}
           </div>

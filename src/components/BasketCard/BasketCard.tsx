@@ -11,6 +11,7 @@ interface BasketProps {
 }
 
 export const BasketCard = ({ cart, setCart, setShoppingCartValue, shoppingCartValue }: BasketProps) => {
+    
     if (!cart.quantity || cart.quantity < 1) return null;
 
     const handleCartIncrease = () => {

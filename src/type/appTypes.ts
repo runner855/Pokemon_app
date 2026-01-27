@@ -302,6 +302,7 @@ export interface PokemonFinalObject {
   id: number;
   name: string;
   mainImage: string;
+  price: number;
 }
 
 export interface PokemonDetailsImages {
@@ -336,6 +337,7 @@ export interface PokemonDetailsObject {
   types: PokemonTypes[];
   description: string;
   images: PokemonDetailsImages;
+  price: number;
 }
 
 export interface PokemonSpeciesLanguage {
