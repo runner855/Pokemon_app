@@ -1,4 +1,3 @@
-import { PokemonDetails } from "../components/PokemonDetails/PokemonDetails";
 import {
   PokemonDetailsObject,
   PokemonSpecies,
@@ -6,7 +5,7 @@ import {
 } from "../type/appTypes";
 
 export async function getPokemonDetails(
-  id: number
+  id: number,
 ): Promise<PokemonDetailsObject | null> {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -26,13 +25,13 @@ export async function getPokemonDetails(
     const capture_rate = species.capture_rate;
     const color = species.color.name;
     const growth = species.growth_rate.name;
-    const habitat = species.habitat.name;
+    const habitat = species.habitat?.name ?? "unknown";
     const types = pokemon.types.map((item: any) => {
       return item.type.name;
     });
 
     const descriptionEntry = species.flavor_text_entries.find(
-      (entry: PokemonFlavorTextEntry) => entry.language.name === "en"
+      (entry: PokemonFlavorTextEntry) => entry.language.name === "en",
     );
 
     const description = descriptionEntry
@@ -52,6 +51,7 @@ export async function getPokemonDetails(
       habitat,
       types,
       description,
+      price: Math.round(experience * 2 + (255 - capture_rate)),
       images: {
         One: pokemon.sprites.other["official-artwork"].front_default,
         Two: pokemon.sprites.other["home"].front_default,
