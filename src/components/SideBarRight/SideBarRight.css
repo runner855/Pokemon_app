@@ -29,8 +29,7 @@
 .growth,
 .habitat,
 .types,
-.color,
-.price {
+.color {
   font-family: "Oswald", sans-serif;
   font-size: 20px;
   font-weight: 600;
@@ -84,8 +83,7 @@
   .growth,
   .habitat,
   .types,
-  .color,
-  .price {
+  .color {
     width: 170%;
   }
 }

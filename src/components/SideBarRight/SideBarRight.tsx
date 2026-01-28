@@ -5,24 +5,21 @@ import { PokemonEvolution } from '../PokemonEvolution/PokemonEvolution';
 import "./SideBarRight.css"
 
 interface SideBarRightProps {
-    PokemonDetails: PokemonDetailsObject | null;
-    cart: CartItem[];
-    setCart: React.Dispatch<React.SetStateAction<CartItem[]>>,
-    shoppingCartValue: number,
-    setShoppingCartValue: React.Dispatch<React.SetStateAction<number>>,
-    favorites: FavoriteItem[];
-    setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>,
-    mainImage: string;
-    setMainImage: React.Dispatch<React.SetStateAction<string>>,
-    pokemon: PokemonFinalObject[] | undefined;
+  PokemonDetails: PokemonDetailsObject;
+  cart: CartItem[];
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  favorites: FavoriteItem[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
+  mainImage: string;
+  setMainImage: React.Dispatch<React.SetStateAction<string>>;
+  pokemon: PokemonFinalObject[] | undefined;
 }
+
 
 export const SideBarRight = ({
     PokemonDetails,
     cart,
     setCart,
-    shoppingCartValue,
-    setShoppingCartValue,
     favorites,
     setFavorites,
     mainImage,
@@ -102,7 +99,6 @@ export const SideBarRight = ({
                 PokemonDetails={PokemonDetails}
 
             />
-            <div className='price'>Price:${PokemonDetails.price} </div>
             <div className='height'>Height: {PokemonDetails.height}</div>
             <div className='weight'>Weight: {PokemonDetails.weight}</div>
             <div className='happiness'>Happiness: {PokemonDetails.happiness}</div>

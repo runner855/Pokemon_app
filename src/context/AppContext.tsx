@@ -2,7 +2,6 @@ import { createContext, useContext, useState, ReactNode, useEffect } from "react
 import { CartItem, FavoriteItem, Pokemon, PokemonDetailsObject, PokemonFinalObject } from "../type/appTypes";
 import { getPokemon } from "../hooks/getPokemon";
 import { getPokemonDetails } from "../hooks/getPokemonDetails";
-import { useParams } from "react-router-dom";
 
 
 type AppContextType = {
@@ -19,8 +18,6 @@ type AppContextType = {
     setPageNumber: React.Dispatch<React.SetStateAction<number>>;
     allFiltersClicked: boolean;
     setAllFiltersClicked: React.Dispatch<React.SetStateAction<boolean>>
-    pokemonDetails: PokemonDetailsObject | undefined;
-
 
 };
 
@@ -34,15 +31,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const [pokemon, setPokemon] = useState<PokemonFinalObject[]>();
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [allFiltersClicked, setAllFiltersClicked] = useState<boolean>(false);
-    const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsObject>();
-
-    const params = useParams();
 
 
-
-
-    const generatePrice = () =>
-        Math.floor(Math.random() * 90) + 10;
 
 
     useEffect(() => {
@@ -52,7 +42,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
                 const pokemonWithPrice: PokemonFinalObject[] = data.map(p => ({
                     ...p,
-                    price: generatePrice()
                 }));
 
                 setPokemon(prev =>
@@ -68,30 +57,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         fetchPokemon();
     }, [pageNumber]);
 
-
-
-
-
-   useEffect(() => {
-    const fetchPokemonDetails = async () => {
-        try {
-            const pokemonData = await getPokemonDetails(Number(params.id));
-            if (!pokemonData) return;
-
-            const pokemonWithPrice: PokemonDetailsObject = {
-                ...pokemonData,
-                price: generatePrice(), 
-            };
-
-            setPokemonDetails(pokemonWithPrice);
-            setMainImage(pokemonWithPrice.images.One);
-        } catch (error) {
-            console.error("Error fetching Pokemon:", error);
-        }
-    };
-
-    fetchPokemonDetails();
-}, [params.id]);
 
     return (
         <AppContext.Provider
@@ -109,7 +74,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                 setPageNumber,
                 allFiltersClicked,
                 setAllFiltersClicked,
-                pokemonDetails,
+                
             }}
         >
             {children}

@@ -1,63 +1,67 @@
 import React, { useEffect, useState } from 'react';
 import "./PokemonProductPage.css";
-import {  PokemonDetailsObject } from '../../type/appTypes';
+import { PokemonDetailsObject } from '../../type/appTypes';
 import { SideBarLeft } from '../SideBarLeft/SideBarLeft';
 import { SideBarRight } from '../SideBarRight/SideBarRight';
 import { useParams } from "react-router-dom";
 import { getPokemonDetails } from '../../hooks/getPokemonDetails';
 import { useAppContext } from '../../context/AppContext';
 
-
 export const PokemonProductPage = () => {
+  const {
+    cart,
+    setCart,
+    favorites,
+    setFavorites,
+    mainImage,
+    setMainImage,
+    pokemon
+  } = useAppContext();
 
-    const { cart, setCart, shoppingCartValue, setShoppingCartValue, favorites, setFavorites, mainImage, setMainImage, pokemon} = useAppContext();
+  const { id } = useParams();
+  const [pokemonDetails, setPokemonDetails] =
+    useState<PokemonDetailsObject | undefined>();
 
-    const params = useParams();
+  useEffect(() => {
+    if (!id) return;
 
-    const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsObject | null>(null);
-
-
-    useEffect(() => {
     const fetchPokemonDetails = async () => {
-        try {
-            const pokemonData = await getPokemonDetails(Number(params.id));
-            if (!pokemonData) return; 
-            setPokemonDetails(pokemonData);
+      const data = await getPokemonDetails(Number(id));
+      if (!data) return;
 
-            setMainImage(pokemonData.images.One);
-        } catch (error) {
-            console.error("Error fetching Pokemon:", error);
-        }
+      setPokemonDetails(data);
+      setMainImage(data.images.One);
     };
 
     fetchPokemonDetails();
-    }, [params.id]);
-    
+  }, [id, setMainImage]);
 
-    return (
-        <div className='principal_container'>
-            <div className='container_left'>
-                <SideBarLeft
-                    PokemonDetails={pokemonDetails}
-                    mainImage={mainImage}
-                    setMainImage={setMainImage}
-                />
-            </div>
+  if (!pokemonDetails) {
+    return <div>Loading Pokémon…</div>;
+  }
 
-            <div className='sidebar_right'>
-                <SideBarRight
-                    PokemonDetails={pokemonDetails}
-                    cart={cart}
-                    setCart={setCart}
-                    shoppingCartValue={shoppingCartValue}
-                    setShoppingCartValue={setShoppingCartValue}
-                    favorites={favorites}
-                    setFavorites={setFavorites}
-                    mainImage={mainImage}
-                    setMainImage={setMainImage}
-                    pokemon={pokemon}
-                />
-            </div>
-        </div>
-    );
-}
+  return (
+    <div className='principal_container'>
+      <div className='container_left'>
+        <SideBarLeft
+          PokemonDetails={pokemonDetails}
+          mainImage={mainImage}
+          setMainImage={setMainImage}
+        />
+      </div>
+
+      <div className='sidebar_right'>
+        <SideBarRight
+          PokemonDetails={pokemonDetails}
+          cart={cart}
+          setCart={setCart}
+          favorites={favorites}
+          setFavorites={setFavorites}
+          mainImage={mainImage}
+          setMainImage={setMainImage}
+          pokemon={pokemon}
+        />
+      </div>
+    </div>
+  );
+};

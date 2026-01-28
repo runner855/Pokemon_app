@@ -3,7 +3,7 @@ import { PokemonDetailsObject } from '../../type/appTypes';
 import "./SideBarLeft.css";
 
 interface SideBarLeftProps {
-    PokemonDetails: PokemonDetailsObject | null;
+    PokemonDetails: PokemonDetailsObject | undefined;
     mainImage: string;
     setMainImage: React.Dispatch<React.SetStateAction<string>>
     
