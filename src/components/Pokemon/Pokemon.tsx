@@ -9,6 +9,7 @@ import "./Pokemon.css";
 type FilterType = "NONE" | "AZ" | "ZA" | "FAVORITES" | "Price(High to Low)" ;
 export const Pokemon = () => {
 
+
     
 
     const {
@@ -19,8 +20,9 @@ export const Pokemon = () => {
         setPageNumber,
         allFiltersClicked,
         setAllFiltersClicked,
-        pokemonDetails
     } = useAppContext();
+
+    console.log(pokemon)
 
     const [filterOpen, setFilterOpen] = useState(false);
     const [activeFilter, setActiveFilter] = useState<FilterType>("NONE");
