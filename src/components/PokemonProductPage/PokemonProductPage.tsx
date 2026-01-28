@@ -6,7 +6,6 @@ import { SideBarRight } from '../SideBarRight/SideBarRight';
 import { useParams } from "react-router-dom";
 import { getPokemonDetails } from '../../hooks/getPokemonDetails';
 import { useAppContext } from '../../context/AppContext';
-import { PokemonDetails } from '../PokemonDetails/PokemonDetails';
 
 export const PokemonProductPage = () => {
   const {
@@ -41,7 +40,6 @@ export const PokemonProductPage = () => {
     return <div>Loading Pokémon…</div>;
   }
     
-    console.log(PokemonDetails)
 
   return (
     <div className='principal_container'>

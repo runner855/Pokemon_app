@@ -99,7 +99,7 @@ export const SideBarRight = ({
                 PokemonDetails={PokemonDetails}
 
             />
-            <div className='price'>Price $ {PokemonDetails.price}</div>
+            <div className='price'>Price ${PokemonDetails.price}</div>
             <div className='height'>Height: {PokemonDetails.height}</div>
             <div className='weight'>Weight: {PokemonDetails.weight}</div>
             <div className='happiness'>Happiness: {PokemonDetails.happiness}</div>

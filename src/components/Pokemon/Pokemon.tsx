@@ -6,7 +6,7 @@ import { useAppContext } from "../../context/AppContext";
 import { MdClear } from "react-icons/md";
 import "./Pokemon.css";
 
-type FilterType = "NONE" | "AZ" | "ZA" | "FAVORITES" | "Price(High to Low)" ;
+type FilterType = "NONE" | "AZ" | "ZA" | "FAVORITES" | "Price(High to Low)" | "Price(Low to High)" ;
 export const Pokemon = () => {
 
 
@@ -42,6 +42,10 @@ export const Pokemon = () => {
                     favorites.filter(f => f.favorite).map(f => f.id)
                 );
                 return pokemon.filter(p => favoriteIds.has(p.id));
+            case "Price(High to Low)":
+                return [...pokemon].sort((a, b) => b.price - a.price);
+            case "Price(Low to High)":
+                return [...pokemon].sort((a, b) => a.price - b.price)
             
          
 
@@ -58,6 +62,8 @@ export const Pokemon = () => {
     const handleFilterAZ = () => setActiveFilter('AZ');
     const handleFilterZA = () => setActiveFilter('ZA');
     const handleFavoritesFilter = () => setActiveFilter("FAVORITES");
+    const handleFilterHightoLow = () => setActiveFilter('Price(High to Low)');
+    const handleFilterLowtoHigh = () => setActiveFilter('Price(Low to High)');
 
     const handleLoadMore = () => {
         setPageNumber((prev) => prev + 1);
@@ -95,7 +101,8 @@ export const Pokemon = () => {
                                 <div className="dropdown_item" onClick={handleFilterAZ}>A–Z</div>
                                 <div className="dropdown_item" onClick={handleFilterZA}>Z–A</div>
                                 <div className="dropdown_item" onClick={handleFavoritesFilter}>Favorites</div>
-                                <div className="dropdown_item" >Price(High to Low)</div>
+                                <div className="dropdown_item" onClick={handleFilterHightoLow} >Price(High to Low)</div>
+                                <div className="dropdown_item" onClick={handleFilterLowtoHigh}>Price(Low to High)</div>
 
                             </div>
                         )}
