@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from "react";
 import "./PokemonProductPage.css";
-import { PokemonDetailsObject } from '../../type/appTypes';
-import { SideBarLeft } from '../SideBarLeft/SideBarLeft';
-import { SideBarRight } from '../SideBarRight/SideBarRight';
+import { SideBarLeft } from "../SideBarLeft/SideBarLeft";
+import { SideBarRight } from "../SideBarRight/SideBarRight";
 import { useParams } from "react-router-dom";
-import { getPokemonDetails } from '../../hooks/getPokemonDetails';
-import { useAppContext } from '../../context/AppContext';
+import { useAppContext } from "../../context/AppContext";
 
 export const PokemonProductPage = () => {
   const {
@@ -15,35 +13,26 @@ export const PokemonProductPage = () => {
     setFavorites,
     mainImage,
     setMainImage,
-    pokemon
+    pokemon,
+    pokemonDetails,
+    fetchPokemonDetails,
   } = useAppContext();
 
   const { id } = useParams();
-  const [pokemonDetails, setPokemonDetails] =
-    useState<PokemonDetailsObject | undefined>();
 
   useEffect(() => {
-    if (!id) return;
-
-    const fetchPokemonDetails = async () => {
-      const data = await getPokemonDetails(Number(id));
-      if (!data) return;
-
-      setPokemonDetails(data);
-      setMainImage(data.images.One);
-    };
-
-    fetchPokemonDetails();
-  }, [id, setMainImage]);
+    if (id) {
+      fetchPokemonDetails(Number(id));
+    }
+  }, [id, fetchPokemonDetails]);
 
   if (!pokemonDetails) {
     return <div>Loading Pokémon…</div>;
   }
-    
 
   return (
-    <div className='principal_container'>
-      <div className='container_left'>
+    <div className="principal_container">
+      <div className="container_left">
         <SideBarLeft
           PokemonDetails={pokemonDetails}
           mainImage={mainImage}
@@ -51,7 +40,7 @@ export const PokemonProductPage = () => {
         />
       </div>
 
-      <div className='sidebar_right'>
+      <div className="sidebar_right">
         <SideBarRight
           PokemonDetails={pokemonDetails}
           cart={cart}

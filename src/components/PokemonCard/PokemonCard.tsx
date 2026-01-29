@@ -1,14 +1,16 @@
 import React from 'react';
-import { FavoriteItem, PokemonFinalObject } from '../../type/appTypes';
+import { FavoriteItem, PokemonDetailsObject, PokemonFinalObject } from '../../type/appTypes';
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useNavigate } from "react-router";
 import "./PokemonCard.css";
 
-interface PokemonCardProps {
-    pok: PokemonFinalObject;
-    favorites: FavoriteItem[];
-    setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
-}
+type PokemonCardProps = {
+  pok: PokemonFinalObject;
+  favorites: FavoriteItem[];
+  setFavorites: React.Dispatch<React.SetStateAction<FavoriteItem[]>>;
+  pokemonDetails?: PokemonDetailsObject; 
+};
+
 
 
 export const PokemonCard = ({ pok, favorites, setFavorites }:PokemonCardProps) => {

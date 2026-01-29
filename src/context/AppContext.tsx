@@ -18,6 +18,10 @@ type AppContextType = {
     setPageNumber: React.Dispatch<React.SetStateAction<number>>;
     allFiltersClicked: boolean;
     setAllFiltersClicked: React.Dispatch<React.SetStateAction<boolean>>
+    pokemonDetails: PokemonDetailsObject | null;
+    fetchPokemonDetails: (id: number) => Promise<void>;
+    pokemonDetailsMap: Record<number, PokemonDetailsObject>;
+    fetchPokemonDetailsIfNeeded: (id: number) => Promise<void>;
 
 };
 
@@ -31,9 +35,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const [pokemon, setPokemon] = useState<PokemonFinalObject[]>();
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [allFiltersClicked, setAllFiltersClicked] = useState<boolean>(false);
-
-
-
+    const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsObject | null>(null);
+    const [pokemonDetailsMap, setPokemonDetailsMap] = useState<Record<number, PokemonDetailsObject>>({});
 
     useEffect(() => {
         const fetchPokemon = async () => {
@@ -57,24 +60,54 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         fetchPokemon();
     }, [pageNumber]);
 
+    const fetchPokemonDetails = async (id: number) => {
+        try {
+            const data = await getPokemonDetails(id);
+            if (!data) return;
+
+            setPokemonDetails(data);
+            setMainImage(data.images.One);
+        } catch (err) {
+            console.error("Error fetching Pokemon details:", err);
+        }
+    };
+
+    const fetchPokemonDetailsIfNeeded = async (id: number) => {
+        if (pokemonDetailsMap[id]) return;
+
+        try {
+            const data = await getPokemonDetails(id);
+            if (!data) return;
+
+            setPokemonDetailsMap(prev => ({
+                ...prev,
+                [id]: data,
+            }));
+        } catch (err) {
+            console.error("Error fetching Pokémon details:", err);
+        }
+    };
 
     return (
         <AppContext.Provider
             value={{
-                cart,
-                setCart,
-                favorites,
-                setFavorites,
-                shoppingCartValue,
-                setShoppingCartValue,
-                mainImage,
-                setMainImage,
-                pokemon,
-                pageNumber,
-                setPageNumber,
-                allFiltersClicked,
-                setAllFiltersClicked,
-                
+              cart,
+    setCart,
+    favorites,
+    setFavorites,
+    shoppingCartValue,
+    setShoppingCartValue,
+    mainImage,
+    setMainImage,
+    pokemon,
+    pageNumber,
+    setPageNumber,
+    allFiltersClicked,
+    setAllFiltersClicked,
+    pokemonDetails,
+    fetchPokemonDetails,
+    pokemonDetailsMap,
+    fetchPokemonDetailsIfNeeded,
             }}
         >
             {children}

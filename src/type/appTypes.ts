@@ -318,10 +318,25 @@ export interface PokemonTypesObject {
   url: string;
 }
 
-export interface PokemonTypes {
-  slot: number;
-  type: PokemonTypesObject;
-}
+export type PokemonTypes =
+  | "fire"
+  | "water"
+  | "grass"
+  | "electric"
+  | "ice"
+  | "dragon"
+  | "dark"
+  | "fairy"
+  | "normal"
+  | "fighting"
+  | "flying"
+  | "poison"
+  | "ground"
+  | "rock"
+  | "bug"
+  | "ghost"
+  | "steel"
+  | "psychic";
 
 export interface PokemonDetailsObject {
   id: number;
