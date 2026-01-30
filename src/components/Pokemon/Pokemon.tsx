@@ -36,6 +36,7 @@ export const Pokemon = () => {
 
     const [filterOpen, setFilterOpen] = useState(false);
     const [filterDropDownOpen, setFilterDropDownOpen] = useState(false);
+    const [filterDropDownPriceOpen, setFilterDropDownPriceOpen] = useState(false);
     const [activeFilter, setActiveFilter] = useState<FilterType>("NONE");
     const [selectedType, setSelectedType] = useState<PokemonTypes | null>(null);
 
@@ -71,8 +72,6 @@ export const Pokemon = () => {
                 return result;
         }
     }, [pokemon, favorites, activeFilter, selectedType, pokemonDetailsMap]);
-
-    console.log(selectedType?.length)
 
     return (
         <>
@@ -148,6 +147,23 @@ export const Pokemon = () => {
                                     </div>
                                 )}
                             </div>
+                        <div className="price_filters_scroll_body">
+                            <div className="price_filter_section">
+                                <div
+                                    className="filter_price_container"
+                                    onClick={() => setFilterDropDownPriceOpen(!filterDropDownPriceOpen)}
+                                >
+                                    <h3>Price</h3>
+                                    {filterDropDownPriceOpen ? <SlArrowUp /> : <SlArrowDown />}
+                                </div>
+
+                                {filterDropDownPriceOpen && (
+                                    <div className="price_filter_content">
+                                        Price
+                                    </div>
+                                )}
+                                </div>
+                                </div>
                         </div>
 
                         <div className="filters_bottom_buttons">
@@ -158,7 +174,7 @@ export const Pokemon = () => {
                                 className="seeResults"
                                 onClick={() => setAllFiltersClicked(false)}
                             >
-                                See Results ({selectedType?.length})
+                                See Results
                             </button>
                         </div>
                     </div>

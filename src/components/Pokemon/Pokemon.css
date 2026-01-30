@@ -193,6 +193,10 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
+.price_filter_section {
+  border-bottom: 1px solid #e5e5e5;
+}
+
 .filter_type_container {
   display: flex;
   align-items: center;
@@ -205,6 +209,20 @@
   margin-left: 0.5em;
   text-transform: uppercase;
   font-family: "Oswald", sans-serif;
+}
+
+.filter_price_container h3 {
+  margin-left: 0.5em;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+}
+
+.filter_price_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 1.5em;
+  cursor: pointer;
 }
 
 .filter_types {
@@ -220,6 +238,13 @@
    ===================================================== */
 
 .type_filter_content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  padding: 1em 1.5em;
+}
+
+.price_filter_content {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
