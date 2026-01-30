@@ -38,11 +38,44 @@
 
 .filters_right {
   display: flex;
-  align-items: center;
+  text-align: right;
   gap: 1.5em;
-  font-family: "Lato", sans-serif;
+  position: absolute;
+  min-width: 240px;
+  right: 0;
+  z-index: 100;
+  background-color: #fff;
+  margin-right: 4em;
+}
+
+.filters_right .AZ,
+.ZA,
+.favorites,
+.pricehigh_low,
+.pricelow_high {
+  font-family: "Oswald", sans-serif;
+  cursor: pointer;
   font-weight: 700;
+  width: 100%;
+  padding: 13px 16px 13px 16px;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  border: 1px solid #f2f2f2;
+  background: #fff;
+  color: #1f1f24;
+  opacity: 0.5;
+  text-align: right;
   font-size: 14px;
+  text-transform: uppercase;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 /* =====================================================
@@ -70,12 +103,11 @@
   right: 0;
   min-width: 200px;
   background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 100;
 }
 
 .dropdown_item {
-  padding: 0.6em 1em;
+  padding: 1em;
   cursor: pointer;
 }
 

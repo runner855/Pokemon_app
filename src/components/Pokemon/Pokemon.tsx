@@ -97,11 +97,11 @@ export const Pokemon = () => {
 
                         {filterOpen && (
                             <div className="dropdown">
-                                <div onClick={() => setActiveFilter("AZ")}>A–Z</div>
-                                <div onClick={() => setActiveFilter("ZA")}>Z–A</div>
-                                <div onClick={() => setActiveFilter("FAVORITES")}>Favorites</div>
-                                <div onClick={() => setActiveFilter("Price(High to Low)")}>Price ↑</div>
-                                <div onClick={() => setActiveFilter("Price(Low to High)")}>Price ↓</div>
+                                <div onClick={() => setActiveFilter("AZ")} className="AZ">A–Z</div>
+                                <div onClick={() => setActiveFilter("ZA")} className="ZA">Z–A</div>
+                                <div onClick={() => setActiveFilter("FAVORITES")} className="favorites">Favorites</div>
+                                <div onClick={() => setActiveFilter("Price(High to Low)")} className="pricehigh_low">Price(High to Low)</div>
+                                <div onClick={() => setActiveFilter("Price(Low to High)")} className="pricelow_high">Price(Low to High)</div>
                             </div>
                         )}
                     </div>
