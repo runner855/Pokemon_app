@@ -72,6 +72,8 @@ export const Pokemon = () => {
         }
     }, [pokemon, favorites, activeFilter, selectedType, pokemonDetailsMap]);
 
+    console.log(selectedType?.length)
+
     return (
         <>
             <div className="pokemon_title">Pokemon</div>
@@ -156,7 +158,7 @@ export const Pokemon = () => {
                                 className="seeResults"
                                 onClick={() => setAllFiltersClicked(false)}
                             >
-                                See Results
+                                See Results ({selectedType?.length})
                             </button>
                         </div>
                     </div>
