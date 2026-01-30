@@ -37,6 +37,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const [allFiltersClicked, setAllFiltersClicked] = useState<boolean>(false);
     const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsObject | null>(null);
     const [pokemonDetailsMap, setPokemonDetailsMap] = useState<Record<number, PokemonDetailsObject>>({});
+    const [isFiltering, setIsFiltering] = useState<boolean>();
 
     useEffect(() => {
         const fetchPokemon = async () => {
