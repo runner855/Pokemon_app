@@ -244,13 +244,6 @@
   padding: 1em 1.5em;
 }
 
-.price_filter_content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  padding: 1em 1.5em;
-}
-
 .type_filter_item {
   padding: 0.4em 0.8em;
   background: #f2f2f2;
@@ -268,6 +261,17 @@
 .type_filter_item.active {
   background: #000;
   color: #fff;
+}
+
+/* =====================================================
+    PRICE RANGE FILTER SLIDER
+   ===================================================== */
+
+.price_filter_content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  padding: 1em 1.5em;
 }
 
 /* =====================================================

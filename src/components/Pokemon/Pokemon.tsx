@@ -6,6 +6,7 @@ import { MdClear } from "react-icons/md";
 import { useAppContext } from "../../context/AppContext";
 import "./Pokemon.css";
 import { PokemonTypes } from "../../type/appTypes";
+import { MultiRangeSlider } from "../MultiRangeSlider/MultiRangeSlider";
 
 type FilterType =
     | "NONE"
@@ -39,6 +40,7 @@ export const Pokemon = () => {
     const [filterDropDownPriceOpen, setFilterDropDownPriceOpen] = useState(false);
     const [activeFilter, setActiveFilter] = useState<FilterType>("NONE");
     const [selectedType, setSelectedType] = useState<PokemonTypes | null>(null);
+    const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
 
     useEffect(() => {
         if (!pokemon) return;
@@ -49,12 +51,19 @@ export const Pokemon = () => {
         if (!pokemon) return [];
         let result = [...pokemon];
 
+        // Filter by type
         if (selectedType) {
             result = result.filter(p =>
                 pokemonDetailsMap[p.id]?.types?.includes(selectedType)
             );
         }
 
+        // Filter by price range
+        result = result.filter(p => 
+            p.price >= priceRange.min && p.price <= priceRange.max
+        );
+
+        // Sort based on active filter
         switch (activeFilter) {
             case "AZ":
                 return result.sort((a, b) => a.name.localeCompare(b.name));
@@ -71,7 +80,12 @@ export const Pokemon = () => {
             default:
                 return result;
         }
-    }, [pokemon, favorites, activeFilter, selectedType, pokemonDetailsMap]);
+    }, [pokemon, favorites, activeFilter, selectedType, pokemonDetailsMap, priceRange]);
+
+    const handleClearAll = () => {
+        setSelectedType(null);
+        setPriceRange({ min: 0, max: 1000 });
+    };
 
     return (
         <>
@@ -120,7 +134,6 @@ export const Pokemon = () => {
                             </button>
                         </div>
 
-
                         <div className="filters_scroll_body">
                             <div className="filter_section">
                                 <div
@@ -147,27 +160,32 @@ export const Pokemon = () => {
                                     </div>
                                 )}
                             </div>
-                        <div className="price_filters_scroll_body">
-                            <div className="price_filter_section">
-                                <div
-                                    className="filter_price_container"
-                                    onClick={() => setFilterDropDownPriceOpen(!filterDropDownPriceOpen)}
-                                >
-                                    <h3>Price</h3>
-                                    {filterDropDownPriceOpen ? <SlArrowUp /> : <SlArrowDown />}
-                                </div>
 
-                                {filterDropDownPriceOpen && (
-                                    <div className="price_filter_content">
-                                        Price
+                            <div className="price_filters_scroll_body">
+                                <div className="price_filter_section">
+                                    <div
+                                        className="filter_price_container"
+                                        onClick={() => setFilterDropDownPriceOpen(!filterDropDownPriceOpen)}
+                                    >
+                                        <h3>Price</h3>
+                                        {filterDropDownPriceOpen ? <SlArrowUp /> : <SlArrowDown />}
                                     </div>
-                                )}
+
+                                    {filterDropDownPriceOpen && (
+                                        <div className="price_filter_content">
+                                            <MultiRangeSlider
+                                                min={0}
+                                                max={1000}
+                                                onChange={(min, max) => setPriceRange({ min, max })}
+                                            />
+                                        </div>
+                                    )}
                                 </div>
-                                </div>
+                            </div>
                         </div>
 
                         <div className="filters_bottom_buttons">
-                            <button className="clearAll" onClick={() => setSelectedType(null)}>
+                            <button className="clearAll" onClick={handleClearAll}>
                                 Clear All
                             </button>
                             <button
@@ -195,7 +213,7 @@ export const Pokemon = () => {
 
             <div className="load_more_container">
                 <p>
-                    You have viewed {displayedPokemon.length} Pokémon of {pokemon?.length ?? 0}
+                    You have viewed {displayedPokemon.length} Pokémon of 1350
                 </p>
 
                 <div className="load_more" onClick={() => setPageNumber(p => p + 1)}>Load More Pokémon</div>
