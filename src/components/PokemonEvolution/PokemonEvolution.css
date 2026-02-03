@@ -7,9 +7,12 @@
 .evolution_img_main {
   height: 4em;
   width: 4em;
-  border: solid 0.1em rgb(2, 0, 0);
   background-color: rgb(242, 242, 242);
   margin: 0.2em;
+}
+
+.evolution_img.active {
+  outline: solid 0.1em rgb(2, 0, 0);
 }
 
 .evolution_images_container {

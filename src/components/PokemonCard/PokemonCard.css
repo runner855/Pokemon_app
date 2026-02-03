@@ -10,17 +10,33 @@
   position: relative;
 }
 
-.pokemon_img {
+.image_container {
+  position: relative;
   width: 100%;
-  max-width: 100%;
-  height: auto;
-  border-radius: 1em;
-  display: block;
+  height: 220px;
+
+  background: #f6f6f6;
+  border-bottom: 1px solid #e5e5e5;
+
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
 }
 
-.image_container {
-  width: 100%;
-  overflow: hidden;
+.results_pokemon_img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: auto;
+  height: auto;
+
+  max-width: 90%;
+  max-height: 90%;
+
+  object-fit: contain;
+
+  transition: transform 0.2s ease;
 }
 
 .image_not_available {

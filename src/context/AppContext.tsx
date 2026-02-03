@@ -61,17 +61,17 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         fetchPokemon();
     }, [pageNumber]);
 
-    const fetchPokemonDetails = async (id: number) => {
-        try {
-            const data = await getPokemonDetails(id);
-            if (!data) return;
+   const fetchPokemonDetails = async (id: number) => {
+    try {
+        const data = await getPokemonDetails(id);
+        if (!data) return;
 
-            setPokemonDetails(data);
-            setMainImage(data.images.One);
-        } catch (err) {
-            console.error("Error fetching Pokemon details:", err);
-        }
-    };
+        setPokemonDetails(data);
+    } catch (err) {
+        console.error("Error fetching Pokemon details:", err);
+    }
+};
+
 
     const fetchPokemonDetailsIfNeeded = async (id: number) => {
         if (pokemonDetailsMap[id]) return;

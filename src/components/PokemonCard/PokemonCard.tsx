@@ -41,7 +41,7 @@ export const PokemonCard = ({ pok, favorites, setFavorites }:PokemonCardProps) =
                  <div className='pokemon_card_fav_icon' onClick={handleFavIconClick}>{isFavorite ?<MdFavorite className='pokemon_card_fav_icon_clicked'/>:<MdFavoriteBorder/>}</div>
                 
                 <img
-                    className="pokemon_img"
+                    className="results_pokemon_img"
                     src={pok.mainImage || IMAGE_NOTFOUND_PLACEHOLDER}
                     alt={pok.name || 'Pokemon Image'}
                     loading='lazy'

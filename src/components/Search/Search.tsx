@@ -19,12 +19,11 @@ export const Search = () => {
   const IMAGE_NOTFOUND_PLACEHOLDER =
     "https://nftcalendar.io/storage/uploads/2022/02/21/image-not-found_0221202211372462137974b6c1a.png";
 
-  // Fetch Pokémon list once
   useEffect(() => {
     const fetchPokemonList = async () => {
       try {
         setLoading(true);
-        const res = await pokemonApiCall.get("pokemon?limit=1300");
+        const res = await pokemonApiCall.get("pokemon?limit=1350");
         setAllPokemon(res.data.results);
       } catch (error) {
         console.error("Failed to fetch Pokémon list");
@@ -36,7 +35,6 @@ export const Search = () => {
     fetchPokemonList();
   }, []);
 
-  // Filter Pokémon as user types
   useEffect(() => {
     if (!pokQuery.trim()) {
       setResults([]);
@@ -50,7 +48,6 @@ export const Search = () => {
     setResults(filtered.slice(0, 6));
   }, [pokQuery, allPokemon]);
 
-  // Helper: extract ID from Pokémon URL
   const getPokemonId = (url: string) => {
     return url.split("/").filter(Boolean).pop();
   };

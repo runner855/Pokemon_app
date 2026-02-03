@@ -7,10 +7,10 @@ import { PokemonDetailsObject } from '../../type/appTypes';
 interface PokemonEvolutionProps {
     mainImage: string;
     setMainImage: React.Dispatch<React.SetStateAction<string>>
-    PokemonDetails: PokemonDetailsObject | null;   
+    PokemonDetails: PokemonDetailsObject | null;
 }
 
-export const PokemonEvolution = ({mainImage, setMainImage, PokemonDetails}:PokemonEvolutionProps) => {
+export const PokemonEvolution = ({ mainImage, setMainImage, PokemonDetails }: PokemonEvolutionProps) => {
     const [pokemonEvolution, setPokemonEvolution] = useState<any>(null);
     const params = useParams();
 
@@ -23,28 +23,34 @@ export const PokemonEvolution = ({mainImage, setMainImage, PokemonDetails}:Pokem
                 console.error("Error fetching Pokemon:", error);
             }
         };
-    
+
         fetchPokemonEvolution();
     }, [params.id]);
-   
+
     return (
         <>
             <div className='evolution_main_container'>
 
                 <div className='evolution_count'>{`${pokemonEvolution && pokemonEvolution.EvolutionImages.length} Evolutions Available`}</div>
-            <div className='evolution_images_container'>
+                <div className='evolution_images_container'>
 
-            {pokemonEvolution && pokemonEvolution.EvolutionImages.map((item: any, index:number) => {
-                return (
-                    <div key={index}>
-                        <img className="evolution_img" src={item.image} alt="ev_img" key={index} onClick={() => setMainImage(`${item.image}`) } />
-                    </div>
-                )
+                    {pokemonEvolution && pokemonEvolution.EvolutionImages.map((item: any, index: number) => {
+                        return (
+                            <div key={index}>
+                                <img
+                                    className={`evolution_img ${mainImage === item.image ? "active" : ""
+                                        }`}
+                                    src={item.image}
+                                    alt="ev_img"
+                                    key={index}
+                                    onClick={() => setMainImage(`${item.image}`)} />
+                            </div>
+                        )
 
-            })}
+                    })}
+                </div>
             </div>
-        </div>
         </>
     )
 }
- 
+
