@@ -51,19 +51,16 @@ export const Pokemon = () => {
         if (!pokemon) return [];
         let result = [...pokemon];
 
-        // Filter by type
         if (selectedType) {
             result = result.filter(p =>
                 pokemonDetailsMap[p.id]?.types?.includes(selectedType)
             );
         }
 
-        // Filter by price range
         result = result.filter(p => 
             p.price >= priceRange.min && p.price <= priceRange.max
         );
 
-        // Sort based on active filter
         switch (activeFilter) {
             case "AZ":
                 return result.sort((a, b) => a.name.localeCompare(b.name));
