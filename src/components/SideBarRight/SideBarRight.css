@@ -37,6 +37,7 @@
   line-height: 1.6;
   margin-left: 1em;
   color: #000;
+  width: 20em;
 }
 
 .description p {
@@ -86,6 +87,6 @@
   .types,
   .color,
   .price {
-    width: 170%;
+    width: 10em;
   }
 }

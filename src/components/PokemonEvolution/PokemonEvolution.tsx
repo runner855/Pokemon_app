@@ -1,56 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import { getEvolutionChain } from '../../hooks/getEvolutionChain';
-import { useParams } from "react-router-dom";
-import "./PokemonEvolution.css";
-import { PokemonDetailsObject } from '../../type/appTypes';
+import './PokemonEvolution.css';
 
 interface PokemonEvolutionProps {
-    mainImage: string;
-    setMainImage: React.Dispatch<React.SetStateAction<string>>
-    PokemonDetails: PokemonDetailsObject | null;
+  pokemonId: number;
+  mainImage: string;
+  setMainImage: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const PokemonEvolution = ({ mainImage, setMainImage, PokemonDetails }: PokemonEvolutionProps) => {
-    const [pokemonEvolution, setPokemonEvolution] = useState<any>(null);
-    const params = useParams();
+export const PokemonEvolution = ({
+  pokemonId,
+  mainImage,
+  setMainImage,
+}: PokemonEvolutionProps) => {
+  const [pokemonEvolution, setPokemonEvolution] = useState<any>(null);
 
-    useEffect(() => {
-        const fetchPokemonEvolution = async () => {
-            try {
-                const evolutionData = await getEvolutionChain(Number(params.id));
-                setPokemonEvolution(evolutionData);
-            } catch (error) {
-                console.error("Error fetching Pokemon:", error);
-            }
-        };
+  useEffect(() => {
+    const fetchEvolution = async () => {
+      try {
+        const evolutionData = await getEvolutionChain(pokemonId);
+        setPokemonEvolution(evolutionData);
+      } catch (error) {
+        console.error('Error fetching evolution chain:', error);
+      }
+    };
 
-        fetchPokemonEvolution();
-    }, [params.id]);
+    fetchEvolution();
+  }, [pokemonId]);
 
-    return (
-        <>
-            <div className='evolution_main_container'>
+  if (!pokemonEvolution) return null;
 
-                <div className='evolution_count'>{`${pokemonEvolution && pokemonEvolution.EvolutionImages.length} Evolutions Available`}</div>
-                <div className='evolution_images_container'>
+  return (
+    <div className="evolution_main_container">
+      <div className="evolution_count">
+        {pokemonEvolution.EvolutionImages.length} Evolutions Available
+      </div>
 
-                    {pokemonEvolution && pokemonEvolution.EvolutionImages.map((item: any, index: number) => {
-                        return (
-                            <div key={index}>
-                                <img
-                                    className={`evolution_img ${mainImage === item.image ? "active" : ""
-                                        }`}
-                                    src={item.image}
-                                    alt="ev_img"
-                                    key={index}
-                                    onClick={() => setMainImage(`${item.image}`)} />
-                            </div>
-                        )
-
-                    })}
-                </div>
-            </div>
-        </>
-    )
-}
-
+      <div className="evolution_images_container">
+        {pokemonEvolution.EvolutionImages.map((item: any, index: number) => (
+          <img
+            key={index}
+            className={`evolution_img ${
+              mainImage === item.image ? 'active' : ''
+            }`}
+            src={item.image}
+            alt="evolution"
+            onClick={() => setMainImage(item.image)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};

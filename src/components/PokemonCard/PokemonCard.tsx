@@ -3,6 +3,7 @@ import { FavoriteItem, PokemonDetailsObject, PokemonFinalObject } from '../../ty
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useNavigate } from "react-router";
 import "./PokemonCard.css";
+import { PokemonEvolution } from '../PokemonEvolution/PokemonEvolution';
 
 type PokemonCardProps = {
   pok: PokemonFinalObject;
@@ -13,7 +14,8 @@ type PokemonCardProps = {
 
 
 
-export const PokemonCard = ({ pok, favorites, setFavorites }:PokemonCardProps) => {
+export const PokemonCard = ({ pok, favorites, setFavorites, pokemonDetails }: PokemonCardProps) => {
+  const [mainImage, setMainImage] = React.useState(pok.mainImage);
     const navigate = useNavigate();
 
       const isFavorite = favorites.some(f => f.id === pok.id);
@@ -47,8 +49,19 @@ export const PokemonCard = ({ pok, favorites, setFavorites }:PokemonCardProps) =
                     loading='lazy'
                     onError={(e) => e.currentTarget.src = IMAGE_NOTFOUND_PLACEHOLDER}
                 />
-            </div>
-            <div className='title'>{pok.name.toUpperCase() || 'Title unavailable'}</div>
+        </div>
+        <div className='card_info'>
+          <div className='card_title'>{pok.name.toUpperCase() || 'Title unavailable'}</div>
+          <div className='pokemon_price'>EUR {pokemonDetails?.price},00</div>
+             <div onClick={e => e.stopPropagation()}>
+          <PokemonEvolution
+            pokemonId={pok.id}
+            mainImage={mainImage}
+            setMainImage={setMainImage}
+          />
+        </div>
+
+        </div>
         </div>
     );
 }

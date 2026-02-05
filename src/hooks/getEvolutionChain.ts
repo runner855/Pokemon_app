@@ -1,4 +1,3 @@
-import { PokemonDetails } from "../components/PokemonDetails/PokemonDetails";
 import { PokemonSpecies } from "../type/appTypes";
 
 function extractEvolutionNames(chain: any, arr: string[] = []) {
@@ -43,7 +42,7 @@ export async function getEvolutionChain(id: number): Promise<any> {
             evoData.sprites?.front_default ||
             null,
         };
-      })
+      }),
     );
 
     return {

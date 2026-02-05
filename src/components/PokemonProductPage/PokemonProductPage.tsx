@@ -49,8 +49,8 @@ export const PokemonProductPage = () => {
           setFavorites={setFavorites}
           mainImage={mainImage}
           setMainImage={setMainImage}
-          pokemon={pokemon}
         />
+
       </div>
     </div>
   );
