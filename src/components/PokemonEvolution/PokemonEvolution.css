@@ -11,7 +11,7 @@
   margin: 0.2em;
 }
 
-.evolution_img.active {
+.evolution_img.active:hover {
   outline: solid 0.1em rgb(2, 0, 0);
 }
 

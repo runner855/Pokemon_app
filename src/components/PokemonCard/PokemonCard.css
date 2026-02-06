@@ -4,14 +4,47 @@
   text-align: center;
   font-family: arial;
   background-color: rgb(247, 245, 243);
-  height: auto;
+  height: 20em;
   width: 100%;
   display: block;
   position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.25s ease;
+  overflow: hidden;
 }
 
-.card:hover {
-  border: solid black 0.1em;
+.cardhover {
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-color: rgb(247, 245, 243);
+  height: 20em;
+  width: 100%;
+  display: block;
+  position: relative;
+  outline: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+.evolution_overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(247, 245, 243);
+  transform: translateY(100%);
+  opacity: 0;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.cardhover .evolution_overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cardhover .results_pokemon_img {
+  transform: translate(-50%, -55%);
 }
 
 .card_info {
